@@ -1,9 +1,9 @@
 import React from 'react';
 
-export const App = () => {
+export const IndexView = () => {
     return (
         <div>
-            <h1>app</h1>
+            <h1>IndexView</h1>
         </div>
     );
 };
