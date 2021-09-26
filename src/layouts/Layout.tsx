@@ -11,7 +11,8 @@ const SAppWrapper = styled.div`
     position: absolute;
     top: 0;
     left: ${theme.componenetSizes.sidebar};
-    width: calc(100% - ${theme.componenetSizes.sidebar});
+    width: calc(100% - ${theme.componenetSizes.sidebar} - 64px);
+    padding: 32px 24px;
 `;
 
 interface Props {
