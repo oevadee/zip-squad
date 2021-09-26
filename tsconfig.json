@@ -19,5 +19,6 @@
         "suppressImplicitAnyIndexErrors": true,
         "types": ["node"]
     },
-    "include": ["src"]
+    "include": ["src"],
+    "files": ["svg.d.ts"]
 }
