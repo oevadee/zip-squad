@@ -1,3 +1,4 @@
+import theme from 'constants/theme';
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
@@ -7,14 +8,11 @@ export const GlobalStyle = createGlobalStyle`
 
     body {
         margin: 0;
-        background: #364958;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-            'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        padding: 0;
+        background: ${theme.colors.background};
+        color: ${theme.colors.white};
+        font-family: 'Source Sans Pro', sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-    }
-
-    code {
-        font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
     }
 `;

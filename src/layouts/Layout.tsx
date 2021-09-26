@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import theme from '../contants/theme';
+import theme from 'constants/theme';
 import styled from 'styled-components';
 import { Sidebar } from 'components/sidebar';
 
