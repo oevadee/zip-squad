@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
 import theme from '../contants/theme';
 import styled from 'styled-components';
-
 import { Sidebar } from 'components/sidebar';
 
 const SWrapper = styled.div`

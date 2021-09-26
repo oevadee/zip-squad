@@ -16,7 +16,8 @@
         "moduleResolution": "node",
         "resolveJsonModule": true,
         "jsx": "react-jsx",
-        "suppressImplicitAnyIndexErrors": true
+        "suppressImplicitAnyIndexErrors": true,
+        "types": ["node"]
     },
     "include": ["src"]
 }
