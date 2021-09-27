@@ -4,12 +4,18 @@ import { ThemeProvider } from 'styled-components';
 import theme from 'constants/theme';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
+import { Route, Switch } from 'react-router';
+import { router } from 'router/routes';
 
 export const App = () => {
     return (
         <ThemeProvider theme={theme}>
             <Layout>
-                <h1>app in building...</h1>
+                <Switch>
+                    {router.map(({ component, exact, path }) => (
+                        <Route exact={exact} path={path} component={component} />
+                    ))}
+                </Switch>
                 <ToastContainer
                     position="top-right"
                     autoClose={2000}

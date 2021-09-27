@@ -3,7 +3,7 @@ import { IndexPage } from '../pages/index';
 
 export interface IRoute {
     path: string;
-    components: ComponentType<ReactNode>;
+    component: ComponentType<ReactNode>;
     exact?: boolean;
 }
 
@@ -15,6 +15,6 @@ export const router = [
     {
         path: Routes.Index,
         exact: true,
-        componenets: IndexPage,
+        component: IndexPage,
     },
 ];
