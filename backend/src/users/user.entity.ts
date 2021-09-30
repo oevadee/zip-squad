@@ -25,11 +25,7 @@ export class User {
   @Field()
   password: string;
 
-  @Column()
-  @Field()
-  userId: string;
-
-  @OneToMany(() => Expense, (expense) => expense.creator)
+  @OneToMany(() => Expense, (expense) => expense.creatorId)
   @Field((type) => [Expense], { nullable: true })
   expense?: Expense[];
 }

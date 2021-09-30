@@ -5,6 +5,9 @@ export class CreateExpenseInput {
   @Field()
   value: number;
 
-  @Field({ nullable: true })
-  description?: number;
+  @Field()
+  description?: string;
+
+  @Field()
+  userId: string;
 }

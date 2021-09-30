@@ -3,9 +3,12 @@
 # ------------------------------------------------------
 
 type Expense {
-  id: Int!
-  value: Float!
-  description: Float
+  id: String!
+  value: Int!
+  description: String!
+  creatorId: String!
+  receiverId: String!
+  user: User!
 }
 
 type User {
@@ -14,21 +17,19 @@ type User {
   lastName: String!
   username: String!
   password: String!
-  expense: [User!]!
+  expense: [Expense!]
 }
 
 type Query {
-  getPet(id: String!): User!
-  users: [User!]!
+  getOneUser(id: String!): User!
+  getAllUsers: [User!]!
+  expense(id: String!): Expense!
   expenses: [Expense!]!
-  expense(id: Int!): Expense!
 }
 
 type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
   createExpense(createExpenseInput: CreateExpenseInput!): Expense!
-  updateExpense(updateExpenseInput: UpdateExpenseInput!): Expense!
-  removeExpense(id: Int!): Expense!
 }
 
 input CreateUserInput {
@@ -39,12 +40,7 @@ input CreateUserInput {
 }
 
 input CreateExpenseInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
-}
-
-input UpdateExpenseInput {
-  """Example field (placeholder)"""
-  exampleField: Int
-  id: Int!
+  value: Float!
+  description: String!
+  userId: String!
 }

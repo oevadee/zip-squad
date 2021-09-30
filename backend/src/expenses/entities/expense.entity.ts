@@ -6,16 +6,24 @@ import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 @ObjectType()
 export class Expense {
   @PrimaryGeneratedColumn()
-  @Field((type) => Int)
+  @Field()
   id: string;
 
   @Column()
-  @Field()
+  @Field((type) => Int)
   value: number;
 
   @Column()
-  @Field({ nullable: true })
-  description?: number;
+  @Field()
+  description: string;
+
+  @Column()
+  @Field()
+  creatorId: string;
+
+  @Column()
+  @Field()
+  receiverId: string;
 
   @ManyToOne(() => User, (user) => user.expense)
   @Field((type) => User)

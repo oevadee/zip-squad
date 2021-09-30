@@ -8,14 +8,16 @@ export class UsersResolver {
   constructor(private usersService: UsersService) {}
 
   @Query((returns) => User)
-  getPet(@Args('id', { type: () => String }) id: string): Promise<User> {
-    return this.usersService.findOne(id);
+  getOneUser(@Args('id', { type: () => String }) id: string): Promise<User> {
+    return this.usersService.getOneUser(id);
   }
 
   @Query((returns) => [User])
-  users(): Promise<User[]> {
-    return this.usersService.findAll();
+  getAllUsers(): Promise<User[]> {
+    return this.usersService.getAllUsers();
   }
+
+  // MUTATION
 
   @Mutation((returns) => User)
   createUser(
