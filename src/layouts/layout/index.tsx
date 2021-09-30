@@ -12,7 +12,7 @@ const SAppWrapper = styled.div`
     top: 0;
     left: ${theme.componenetSizes.sidebar};
     width: calc(100% - ${theme.componenetSizes.sidebar} - 64px);
-    padding: 32px 24px;
+    padding: ${({ theme }) => theme.appPadding};
 `;
 
 interface Props {
