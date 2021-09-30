@@ -5,6 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { Router } from 'router/Router';
 import { AppLayout } from 'layouts/app-layout';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 export const App = () => {
     return (

@@ -38,11 +38,11 @@ export const SummaryCard = () => {
             <SCardInnerWrapper>
                 <SSummaryWrapper>
                     <SSummaryAmount>120pln</SSummaryAmount>
-                    <SSummaryParagraph>people owes You</SSummaryParagraph>
+                    <SSummaryParagraph>Money people owe you</SSummaryParagraph>
                 </SSummaryWrapper>
                 <SSummaryWrapper>
                     <SSummaryNegativeAmount>50pln</SSummaryNegativeAmount>
-                    <SSummaryParagraph>You owes people</SSummaryParagraph>
+                    <SSummaryParagraph>Money you owe people</SSummaryParagraph>
                 </SSummaryWrapper>
             </SCardInnerWrapper>
         </Card>
