@@ -64,12 +64,14 @@ export const LoginView = () => {
             </SLogoWrapper>
             <SForm onSubmit={handleSubmit(onSubmit)}>
                 <Input
+                    label="Username"
                     name="username"
                     placeholder="Enter username"
                     register={register}
                     getValues={getValues}
                 />
                 <Input
+                    label="Password"
                     type="password"
                     name="password"
                     placeholder="Enter password"
