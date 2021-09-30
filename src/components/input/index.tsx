@@ -1,4 +1,4 @@
-import React, { DetailedHTMLProps, InputHTMLAttributes } from 'react';
+import React, { InputHTMLAttributes } from 'react';
 import { FieldValues, UseFormGetValues, UseFormRegister } from 'react-hook-form';
 import styled from 'styled-components';
 
@@ -25,13 +25,16 @@ const SInput = styled.input`
     background: none;
     border: solid 1px ${({ theme }) => theme.colors.darkGreen};
     color: ${({ theme }) => theme.colors.white};
+    outline: none;
+    transition: ${({ theme }) => theme.transitions.ease};
 
     &:focus {
-        outline-color: ${({ theme }) => theme.colors.primary};
+        border: solid 1px ${({ theme }) => theme.colors.primary};
     }
 
     &::-webkit-input-placeholder {
         /* WebKit, Blink, Edge */
+        color: ${({ theme }) => theme.colors.gray};
     }
     &:-moz-placeholder {
         /* Mozilla Firefox 4 to 18 */
@@ -49,7 +52,6 @@ const SInput = styled.input`
         /* Microsoft Edge */
         color: ${({ theme }) => theme.colors.gray};
     }
-
     &::placeholder {
         /* Most modern browsers support this now. */
         color: ${({ theme }) => theme.colors.gray};

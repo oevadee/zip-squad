@@ -47,6 +47,7 @@ const SLink = styled(Link)`
     display: grid;
     place-items: center;
     transform: translateY(-1px);
+    text-decoration: none;
 `;
 
 export const LoginView = () => {
