@@ -1,4 +1,4 @@
-import React, { DetailedHTMLProps, InputHTMLAttributes } from 'react';
+import React, { InputHTMLAttributes } from 'react';
 import { FieldValues, UseFormGetValues, UseFormRegister } from 'react-hook-form';
 import styled from 'styled-components';
 
@@ -25,18 +25,44 @@ const SInput = styled.input`
     background: none;
     border: solid 1px ${({ theme }) => theme.colors.darkGreen};
     color: ${({ theme }) => theme.colors.white};
+    outline: none;
+    transition: ${({ theme }) => theme.transitions.ease};
 
     &:focus {
-        outline-color: ${({ theme }) => theme.colors.primary};
+        border: solid 1px ${({ theme }) => theme.colors.primary};
+    }
+
+    &::-webkit-input-placeholder {
+        /* WebKit, Blink, Edge */
+        color: ${({ theme }) => theme.colors.gray};
+    }
+    &:-moz-placeholder {
+        /* Mozilla Firefox 4 to 18 */
+        color: ${({ theme }) => theme.colors.gray};
+    }
+    &::-moz-placeholder {
+        /* Mozilla Firefox 19+ */
+        color: ${({ theme }) => theme.colors.gray};
+    }
+    &:-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        color: ${({ theme }) => theme.colors.gray};
+    }
+    &::-ms-input-placeholder {
+        /* Microsoft Edge */
+        color: ${({ theme }) => theme.colors.gray};
+    }
+    &::placeholder {
+        /* Most modern browsers support this now. */
+        color: ${({ theme }) => theme.colors.gray};
     }
 
     &:-webkit-autofill,
     :-webkit-autofill:hover,
     :-webkit-autofill:focus,
     :-webkit-autofill:active {
-        -webkit-box-shadow: 0 0 0 30px ${({ theme }) => theme.colors.darkGreen} inset !important;
+        -webkit-box-shadow: 0 0 0 30px ${({ theme }) => theme.colors.background} inset !important;
         -webkit-text-fill-color: ${({ theme }) => theme.colors.white} !important;
-        -webkit-border: none !important;
     }
 `;
 
@@ -46,7 +72,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
     getValues: UseFormGetValues<FieldValues>;
 }
 
-export const Input = ({ placeholder, register, getValues, name, type }: Props) => {
+export const Input = ({ placeholder, register, getValues, name, type = 'text' }: Props) => {
     return (
         <SWrapper>
             <SLabel htmlFor={name}>{name}</SLabel>

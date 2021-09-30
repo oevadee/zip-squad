@@ -4,7 +4,7 @@ import { router } from './routes';
 
 export const Router = () => (
     <Switch>
-        {router.map(({ component, exact, path, layout }) => (
+        {router.map(({ component, exact, path }) => (
             <Route key={path} exact={exact} path={path} component={component} />
         ))}
     </Switch>

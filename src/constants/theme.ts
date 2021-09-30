@@ -7,6 +7,7 @@ export default {
         secondary: '#7d4e57',
         white: '#fff',
         blue: '#364156',
+        gray: '#ccc5b9',
     },
     font: {
         size: {
@@ -24,7 +25,7 @@ export default {
     componenetSizes: {
         sidebar: '220px',
     },
-    transition: {
+    transitions: {
         ease: 'ease-out 187ms',
     },
     appPadding: '32px 24px',
