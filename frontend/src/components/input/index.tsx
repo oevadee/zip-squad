@@ -13,7 +13,7 @@ const SLabel = styled.label`
     text-transform: uppercase;
     font-size: ${({ theme }) => theme.font.size.small};
     position: absolute;
-    top: -16px;
+    top: -12px;
     left: 8px;
 `;
 
@@ -68,14 +68,15 @@ const SInput = styled.input`
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
     name: string;
+    label: string;
     register: UseFormRegister<FieldValues>;
     getValues: UseFormGetValues<FieldValues>;
 }
 
-export const Input = ({ placeholder, register, getValues, name, type = 'text' }: Props) => {
+export const Input = ({ placeholder, register, getValues, name, label, type = 'text' }: Props) => {
     return (
         <SWrapper>
-            <SLabel htmlFor={name}>{name}</SLabel>
+            <SLabel htmlFor={name}>{label}</SLabel>
             <SInput
                 type={type}
                 placeholder={placeholder}

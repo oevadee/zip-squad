@@ -1,5 +1,4 @@
 import React from 'react';
-import { Layout } from 'layouts/Layout';
 import { ThemeProvider } from 'styled-components';
 import theme from 'constants/theme';
 import { ToastContainer } from 'react-toastify';

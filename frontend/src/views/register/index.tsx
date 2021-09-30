@@ -72,12 +72,14 @@ export const RegisterView = () => {
             <SForm onSubmit={handleSubmit(onSubmit)}>
                 <SNameInputsWrapper>
                     <Input
+                        label="First name"
                         name="firstName"
                         placeholder="Enter your first name"
                         register={register}
                         getValues={getValues}
                     />
                     <Input
+                        label="Last name"
                         name="lastName"
                         placeholder="Enter your last name"
                         register={register}
@@ -85,12 +87,14 @@ export const RegisterView = () => {
                     />
                 </SNameInputsWrapper>
                 <Input
+                    label="Username"
                     name="username"
                     placeholder="Enter username"
                     register={register}
                     getValues={getValues}
                 />
                 <Input
+                    label="Hasło"
                     name="password"
                     placeholder="Enter password"
                     register={register}
