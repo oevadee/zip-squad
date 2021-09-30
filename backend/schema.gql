@@ -1,0 +1,50 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Expense {
+  id: Int!
+  value: Float!
+  description: Float
+}
+
+type User {
+  id: String!
+  firstName: String!
+  lastName: String!
+  username: String!
+  password: String!
+  expense: [User!]!
+}
+
+type Query {
+  getPet(id: String!): User!
+  users: [User!]!
+  expenses: [Expense!]!
+  expense(id: Int!): Expense!
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User!
+  createExpense(createExpenseInput: CreateExpenseInput!): Expense!
+  updateExpense(updateExpenseInput: UpdateExpenseInput!): Expense!
+  removeExpense(id: Int!): Expense!
+}
+
+input CreateUserInput {
+  firstName: String!
+  lastName: String!
+  username: String!
+  password: String!
+}
+
+input CreateExpenseInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateExpenseInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
