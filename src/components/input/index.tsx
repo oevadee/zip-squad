@@ -30,6 +30,31 @@ const SInput = styled.input`
         outline-color: ${({ theme }) => theme.colors.primary};
     }
 
+    &::-webkit-input-placeholder {
+        /* WebKit, Blink, Edge */
+    }
+    &:-moz-placeholder {
+        /* Mozilla Firefox 4 to 18 */
+        color: ${({ theme }) => theme.colors.gray};
+    }
+    &::-moz-placeholder {
+        /* Mozilla Firefox 19+ */
+        color: ${({ theme }) => theme.colors.gray};
+    }
+    &:-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        color: ${({ theme }) => theme.colors.gray};
+    }
+    &::-ms-input-placeholder {
+        /* Microsoft Edge */
+        color: ${({ theme }) => theme.colors.gray};
+    }
+
+    &::placeholder {
+        /* Most modern browsers support this now. */
+        color: ${({ theme }) => theme.colors.gray};
+    }
+
     &:-webkit-autofill,
     :-webkit-autofill:hover,
     :-webkit-autofill:focus,

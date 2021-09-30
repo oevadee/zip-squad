@@ -7,6 +7,7 @@ export default {
         secondary: '#7d4e57',
         white: '#fff',
         blue: '#364156',
+        gray: '#ccc5b9',
     },
     font: {
         size: {

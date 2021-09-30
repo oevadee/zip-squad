@@ -46,6 +46,7 @@ const SLoginButtonWrapper = styled.div`
 
 const SParagraph = styled.p`
     font-size: ${({ theme }) => theme.font.size.small};
+    color: ${({ theme }) => theme.colors.gray};
     margin: 0;
 `;
 

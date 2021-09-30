@@ -8,12 +8,13 @@ const SButton = styled.button`
 `;
 
 const SButtonPrimary = styled(SButton)`
-    padding: 16px 32px;
+    padding: 10px 32px;
     border-radius: ${({ theme }) => theme.borderRadius};
     background: ${({ theme }) => theme.colors.primary};
 
     &:hover {
         background: ${({ theme }) => theme.colors.primary90};
+        transform: scale(1.1);
     }
 
     &:focus {
