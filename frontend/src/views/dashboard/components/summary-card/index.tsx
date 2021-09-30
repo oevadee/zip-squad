@@ -8,6 +8,8 @@ const SCardInnerWrapper = styled.div`
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    text-align: center;
 `;
 
 const SSummaryWrapper = styled.div`
