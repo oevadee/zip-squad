@@ -24,7 +24,7 @@ export default {
     componenetSizes: {
         sidebar: '220px',
     },
-    transition: {
+    transitions: {
         ease: 'ease-out 187ms',
     },
     appPadding: '32px 24px',

@@ -34,9 +34,8 @@ const SInput = styled.input`
     :-webkit-autofill:hover,
     :-webkit-autofill:focus,
     :-webkit-autofill:active {
-        -webkit-box-shadow: 0 0 0 30px ${({ theme }) => theme.colors.darkGreen} inset !important;
+        -webkit-box-shadow: 0 0 0 30px ${({ theme }) => theme.colors.background} inset !important;
         -webkit-text-fill-color: ${({ theme }) => theme.colors.white} !important;
-        -webkit-border: none !important;
     }
 `;
 
@@ -46,7 +45,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
     getValues: UseFormGetValues<FieldValues>;
 }
 
-export const Input = ({ placeholder, register, getValues, name, type }: Props) => {
+export const Input = ({ placeholder, register, getValues, name, type = 'text' }: Props) => {
     return (
         <SWrapper>
             <SLabel htmlFor={name}>{name}</SLabel>

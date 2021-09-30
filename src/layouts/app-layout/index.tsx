@@ -4,7 +4,7 @@ import { useLocation } from 'react-router';
 import { Routes } from 'router/routes';
 import { matchRoute } from 'utils/matchRoute';
 
-const Routes_WITHOUT_LAYOUT = [Routes.Login];
+const Routes_WITHOUT_LAYOUT = [Routes.Login, Routes.Register];
 
 interface Props {
     children: ReactNode;

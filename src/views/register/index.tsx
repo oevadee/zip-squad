@@ -4,8 +4,8 @@ import { Input } from 'components/input';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import { Button, ButtonVariants } from 'components/button';
-import { Routes } from 'router/routes';
 import { Link } from 'react-router-dom';
+import { Routes } from 'router/routes';
 
 const SWrapper = styled.div`
     height: 100vh;
@@ -20,10 +20,16 @@ const SLogoWrapper = styled.div`
 `;
 
 const SForm = styled.form`
-    width: 400px;
+    width: 450px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+`;
+
+const SNameInputsWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    gap: 12px;
 `;
 
 const SButtonsWrapper = styled.div`
@@ -49,7 +55,7 @@ const SLink = styled(Link)`
     transform: translateY(-1px);
 `;
 
-export const LoginView = () => {
+export const RegisterView = () => {
     const { register, getValues, handleSubmit } = useForm();
 
     const onSubmit = (values: any) => {
@@ -62,6 +68,20 @@ export const LoginView = () => {
                 <ZipSquadLogo />
             </SLogoWrapper>
             <SForm onSubmit={handleSubmit(onSubmit)}>
+                <SNameInputsWrapper>
+                    <Input
+                        name="firstName"
+                        placeholder="Enter your first name"
+                        register={register}
+                        getValues={getValues}
+                    />
+                    <Input
+                        name="lastName"
+                        placeholder="Enter your last name"
+                        register={register}
+                        getValues={getValues}
+                    />
+                </SNameInputsWrapper>
                 <Input
                     name="username"
                     placeholder="Enter username"
@@ -69,7 +89,6 @@ export const LoginView = () => {
                     getValues={getValues}
                 />
                 <Input
-                    type="password"
                     name="password"
                     placeholder="Enter password"
                     register={register}
@@ -77,9 +96,9 @@ export const LoginView = () => {
                 />
                 <SButtonsWrapper>
                     <SLoginButtonWrapper>
-                        <SParagraph>Don't have an account?</SParagraph>
-                        <SLink to={Routes.Register}>
-                            <Button variant={ButtonVariants.Secondary}>Just register</Button>
+                        <SParagraph>Already have an account?</SParagraph>
+                        <SLink to={Routes.Login}>
+                            <Button variant={ButtonVariants.Secondary}>Just login</Button>
                         </SLink>
                     </SLoginButtonWrapper>
                     <Button>Register</Button>
