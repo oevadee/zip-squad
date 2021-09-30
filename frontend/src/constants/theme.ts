@@ -12,7 +12,7 @@ export default {
     font: {
         size: {
             base: '18px',
-            heading: '21px',
+            heading: '24px',
             small: '12px',
         },
         weight: {

@@ -9,7 +9,7 @@ const SLink = styled(Link)`
 
 const SListItem = styled.li`
     padding: 12px 24px;
-    font-size: ${({ theme }) => theme.font.size.heading};
+    font-size: ${({ theme }) => theme.font.size.base};
     font-weight: ${({ theme }) => theme.font.weight.semiBold};
     border: solid 1px transparent;
     transition: ${({ theme }) => theme.transitions.ease};
