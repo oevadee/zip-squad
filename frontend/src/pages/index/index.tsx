@@ -1,6 +1,6 @@
 import React from 'react';
-import { IndexView } from '../../views/index';
+import { DashboardView } from '../../views/dashboard/index';
 
-export const IndexPage = () => {
-    return <IndexView />;
+export const DashboardPage = () => {
+    return <DashboardView />;
 };

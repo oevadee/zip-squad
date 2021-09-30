@@ -28,6 +28,6 @@ export default {
     transitions: {
         ease: 'ease-out 187ms',
     },
-    appPadding: '32px 24px',
+    appPadding: '24px 24px',
     borderRadius: '15px',
 };
