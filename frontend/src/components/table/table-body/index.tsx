@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Column } from '..';
 
 const STr = styled.tr`
-    border-bottom: 2px solid green;
+    border-bottom: 2px solid ${({ theme }) => theme.colors.darkGreen};
     height: 40px;
 
     &:hover {

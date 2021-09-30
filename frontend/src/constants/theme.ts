@@ -7,14 +7,15 @@ export default {
         secondary: '#7d4e57',
         white: '#fff',
         blue: '#364156',
-        gray: '#ccc5b9',
+        gray: '#adb5bd',
         lightGreen: '#6bd425',
         red: '#d00000',
     },
     font: {
         size: {
-            base: '18px',
             heading: '24px',
+            base: '18px',
+            medium: '16px',
             small: '12px',
         },
         weight: {

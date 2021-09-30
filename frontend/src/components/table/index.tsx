@@ -14,18 +14,19 @@ const SWrapper = styled.div`
 const STable = styled.table`
     width: 100%;
     border-collapse: collapse;
+    text-align: left;
     table-layout: fixed;
 `;
 
 const STHead = styled.thead`
-    font-size: ${({ theme }) => theme.font.size.heading};
+    font-size: ${({ theme }) => theme.font.size.small};
     color: ${({ theme }) => theme.colors.gray};
     text-transform: uppercase;
     border-bottom: 2px solid ${({ theme }) => theme.colors.darkGreen};
 `;
 
 const STh = styled.th`
-    padding: 8px 4px;
+    padding: 6px 0;
 `;
 
 export type Column = {
@@ -43,7 +44,7 @@ export const Table = ({ columns, ...tableBodyProps }: Props) => {
                 <STHead>
                     <tr>
                         {columns.map(({ label }, i) => (
-                            <STh>{label}</STh>
+                            <STh key={i}>{label}</STh>
                         ))}
                     </tr>
                 </STHead>

@@ -8,24 +8,29 @@ import { Table } from 'components/table';
 
 const cols = [
     {
-        label: 'col1',
-        value: 'value1',
+        label: 'Username',
+        value: 'username',
     },
     {
-        label: 'col2',
-        value: 'value2',
+        label: 'Money you owe',
+        value: 'moneyYouOwe',
     },
     {
-        label: 'col3',
-        value: 'value3',
+        label: 'Money people owe You',
+        value: 'moneyPeopleOwes',
+    },
+];
+
+const rows = [
+    {
+        username: 'Adi',
+        moneyYouOwe: 123,
+        moneyPeopleOwes: 40,
     },
     {
-        label: 'col4',
-        value: 'value4',
-    },
-    {
-        label: 'col5',
-        value: 'value5',
+        username: 'Boby',
+        moneyYouOwe: 0,
+        moneyPeopleOwes: 420,
     },
 ];
 
@@ -34,7 +39,7 @@ export const DashboardView = () => {
         <div>
             <PageHeading>Dashboard</PageHeading>
             <SummaryCard />
-            <Table columns={cols} noDataText="No one owes you money" loading={false} />
+            <Table columns={cols} rows={rows} noDataText="No one owes you money" loading={false} />
         </div>
     );
 };
