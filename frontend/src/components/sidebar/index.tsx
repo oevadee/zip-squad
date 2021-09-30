@@ -2,6 +2,9 @@ import React from 'react';
 import theme from 'constants/theme';
 import styled from 'styled-components';
 import ZipSquadLogo from 'assets/zip-squad-logo.svg';
+import { Link } from 'react-router-dom';
+import { Routes } from 'router/routes';
+import { ListItem } from './components/list-item';
 
 const SWrapper = styled.div`
     height: 100vh;
@@ -24,20 +27,6 @@ const SList = styled.ul`
     padding: 0;
 `;
 
-const SListItem = styled.li`
-    padding: 12px 24px;
-    font-size: ${({ theme }) => theme.font.size.heading};
-    font-weight: ${({ theme }) => theme.font.weight.semiBold};
-    border: solid 1px transparent;
-    transition: ${({ theme }) => theme.transition.ease};
-    cursor: pointer;
-
-    &:hover {
-        color: ${({ theme }) => theme.colors.primary};
-        border: solid 1px ${({ theme }) => theme.colors.primary};
-    }
-`;
-
 export const Sidebar = () => {
     return (
         <SWrapper>
@@ -46,9 +35,9 @@ export const Sidebar = () => {
             </SLogoWrapper>
             <nav>
                 <SList>
-                    <SListItem>Dashboard</SListItem>
-                    <SListItem>Chat</SListItem>
-                    <SListItem>Settings</SListItem>
+                    <ListItem to={Routes.Dashboard}>Dashboard</ListItem>
+                    <ListItem to={Routes.Chat}>Chat</ListItem>
+                    <ListItem to={Routes.Settings}>Settings</ListItem>
                 </SList>
             </nav>
         </SWrapper>
