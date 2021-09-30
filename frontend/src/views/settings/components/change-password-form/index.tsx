@@ -22,7 +22,7 @@ export const ChangePasswordForm = () => {
             />
             <Input
                 type="password"
-                label="ConfirmPassword"
+                label="Confirm password"
                 name="confirmPassword"
                 register={register}
                 getValues={getValues}

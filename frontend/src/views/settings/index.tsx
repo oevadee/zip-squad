@@ -7,6 +7,7 @@ import { PageHeading } from 'components/page-heading';
 import { user } from 'constants/testUser';
 import { ChangePasswordForm } from './components/change-password-form';
 import { ChangeUsernameForm } from './components/username-form';
+import { Card } from 'components/card';
 
 const SWrapper = styled.div`
     width: 100%;
@@ -23,14 +24,9 @@ const SFormsWrapper = styled.div`
     flex: 1;
 `;
 
-const SInfoWrapper = styled.div`
-    flex: 1;
-    border: solid 1px ${({ theme }) => theme.colors.darkGreen};
-    border-radius: ${({ theme }) => theme.borderRadius};
-    padding: 24px 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+const SUserNameHeading = styled.h4`
+    margin: 0;
+    margin-bottom: 24px;
 `;
 
 export const SettingsView = () => {
@@ -42,10 +38,10 @@ export const SettingsView = () => {
                     <ChangeUsernameForm />
                     <ChangePasswordForm />
                 </SFormsWrapper>
-                <SInfoWrapper>
-                    <h2>{`${user.firstName} ${user.lastName}`}</h2>
+                <Card>
+                    <SUserNameHeading>{`${user.firstName} ${user.lastName}`}</SUserNameHeading>
                     <Chip title={user.username} />
-                </SInfoWrapper>
+                </Card>
             </SSettingsWrapper>
         </SWrapper>
     );

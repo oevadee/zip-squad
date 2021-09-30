@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
 const SHeading = styled.h1`
+    margin: 0;
     margin-bottom: 48px;
 `;
 
