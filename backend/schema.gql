@@ -2,34 +2,23 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Expense {
-  id: String!
-  value: Int!
-  description: String!
-  creatorId: String!
-  receiverId: String!
-  user: User!
-}
-
 type User {
-  id: String!
+  id: Int!
+  email: String
   firstName: String!
   lastName: String!
   username: String!
   password: String!
-  expense: [Expense!]
 }
 
 type Query {
-  getOneUser(id: String!): User!
+  getOneUser(userId: Float!): User!
   getAllUsers: [User!]!
-  expense(id: String!): Expense!
-  expenses: [Expense!]!
 }
 
 type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
-  createExpense(createExpenseInput: CreateExpenseInput!): Expense!
+  updateUser(userId: Float!, updateUserInput: UpdateUserUsernameInput!): User!
 }
 
 input CreateUserInput {
@@ -39,8 +28,9 @@ input CreateUserInput {
   password: String!
 }
 
-input CreateExpenseInput {
-  value: Float!
-  description: String!
-  userId: String!
+input UpdateUserUsernameInput {
+  firstName: String!
+  lastName: String!
+  username: String!
+  password: String!
 }

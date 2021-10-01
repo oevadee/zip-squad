@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
-import { UsersModule } from './users/users.module';
-import { ExpensesModule } from './expenses/expenses.module';
+import { UsersModule } from './modules/users/users.module';
+// import { ExpensesModule } from './expenses/expenses.module';
+import { ExpensesModule } from './modules/expenses/expenses.module';
 
 @Module({
   imports: [
@@ -11,16 +11,11 @@ import { ExpensesModule } from './expenses/expenses.module';
       playground: false,
       plugins: [ApolloServerPluginLandingPageLocalDefault],
       installSubscriptionHandlers: true,
-      autoSchemaFile: 'schema.gql',
-    }),
-    TypeOrmModule.forRoot({
-      type: 'sqlite',
-      database: ':memory:',
-      entities: ['dist/**/*.entity{.ts,.js}'],
-      synchronize: true,
+      autoSchemaFile: true,
     }),
     UsersModule,
     ExpensesModule,
+    // ExpensesModule,
   ],
 })
 export class AppModule {}
