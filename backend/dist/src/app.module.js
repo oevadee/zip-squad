@@ -10,7 +10,8 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const graphql_1 = require("@nestjs/graphql");
 const apollo_server_core_1 = require("apollo-server-core");
-const users_module_1 = require("./users/users.module");
+const users_module_1 = require("./modules/users/users.module");
+const expenses_module_1 = require("./modules/expenses/expenses.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -23,6 +24,7 @@ AppModule = __decorate([
                 autoSchemaFile: true,
             }),
             users_module_1.UsersModule,
+            expenses_module_1.ExpensesModule,
         ],
     })
 ], AppModule);

@@ -8,20 +8,20 @@ generator client {
 }
 
 model User {
-  id        Int     @id @default(autoincrement())
-  email     String? @unique
+  id        Int       @id @default(autoincrement())
+  email     String?   @unique
   firstName String
   lastName  String
-  username  String  @unique
+  username  String    @unique
   password  String
-  // expenses  Expense[]
+  expenses  Expense[]
 }
 
-// model Expense {
-//   id         Int    @id @default(autoincrement())
-//   message    String
-//   value      Int
-//   receiverId Int
-//   author     User   @relation(fields: [authorId], references: [id])
-//   authorId   Int
-// }
+model Expense {
+  id         Int    @id @default(autoincrement())
+  message    String
+  value      Int
+  receiverId Int
+  author     User   @relation(fields: [authorId], references: [id])
+  authorId   Int
+}
