@@ -1,26 +1,43 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { CreateUserInput } from './dto/create-user.input';
-import { User } from './user.entity';
+import { PrismaService } from '../prisma.service';
+import { User, Prisma } from '@prisma/client';
 
 @Injectable()
 export class UsersService {
-  constructor(
-    @InjectRepository(User) private usersRepository: Repository<User>,
-  ) {}
+  constructor(private prisma: PrismaService) {}
 
-  getOneUser(id: string): Promise<User> {
-    return this.usersRepository.findOneOrFail(id);
+  async getOneUser(getOneUserInput: number): Promise<User | null> {
+    return this.prisma.user.findUnique({
+      where: {
+        id: getOneUserInput,
+      },
+    });
   }
 
   async getAllUsers(): Promise<User[]> {
-    return this.usersRepository.find();
+    return this.prisma.user.findMany();
   }
 
-  createUser(createUserInput: CreateUserInput): Promise<User> {
-    const newUser = this.usersRepository.create(createUserInput);
+  async createUser(data: Prisma.UserCreateInput): Promise<User> {
+    return this.prisma.user.create({
+      data,
+    });
+  }
 
-    return this.usersRepository.save(newUser);
+  async updateUser(params: {
+    where: Prisma.UserWhereUniqueInput;
+    data: Prisma.UserUpdateInput;
+  }): Promise<User> {
+    const { where, data } = params;
+    return this.prisma.user.update({
+      data,
+      where,
+    });
+  }
+
+  async deleteUser(where: Prisma.UserWhereUniqueInput): Promise<User> {
+    return this.prisma.user.delete({
+      where,
+    });
   }
 }
