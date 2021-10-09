@@ -9,10 +9,8 @@ export class UsersResolver {
   constructor(private usersService: UsersService) {}
 
   @Query((returns) => User)
-  getOneUser(
-    @Args('userId', { type: () => Number }) userId: number,
-  ): Promise<User> {
-    return this.usersService.getOneUser(userId);
+  getOneUser(@Args('id', { type: () => String }) id: number): Promise<User> {
+    return this.usersService.getOneUser(id);
   }
 
   @Query((returns) => [User])
