@@ -14,6 +14,14 @@ export class UsersService {
     });
   }
 
+  async getAuthUser(username: string): Promise<User | undefined> {
+    return this.prisma.user.findUnique({
+      where: {
+        username,
+      },
+    });
+  }
+
   async getAllUsers(): Promise<User[]> {
     return this.prisma.user.findMany();
   }
