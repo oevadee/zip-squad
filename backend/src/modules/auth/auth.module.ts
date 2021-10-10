@@ -1,21 +1,26 @@
 import { Module } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { LocalStrategy } from './local.strategy';
 import { UsersModule } from '../users/users.module';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
-import { jwtConstants } from './contants';
-import { JwtStrategy } from './jwt.strategy';
+import { jwtSecret } from './contants';
+import { JwtStrategy } from './strategies/jwt.strategy';
+import { PrismaService } from 'src/prisma.service';
+import { AuthResolver } from './auth.resolver';
+
+const tokenExpireTime = 60 * 60 * 24 * 7 * 2;
+const defaultPassportStrategy = 'jwt';
 
 @Module({
   imports: [
     UsersModule,
-    PassportModule,
+    PassportModule.register({ defaultStrategy: defaultPassportStrategy }),
     JwtModule.register({
-      secret: jwtConstants.secret,
+      secret: jwtSecret,
+      signOptions: { expiresIn: tokenExpireTime },
     }),
   ],
-  providers: [AuthService, LocalStrategy, JwtStrategy],
+  providers: [AuthResolver, AuthService, JwtStrategy, PrismaService],
   exports: [AuthService],
 })
 export class AuthModule {}

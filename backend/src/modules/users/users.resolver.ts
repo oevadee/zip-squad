@@ -1,4 +1,6 @@
+import { UseGuards } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { GqlAuthGuard } from 'modules/auth/guards/gql-auth.guard';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserUsernameInput } from './dto/update-user.input';
 import { User } from './user.entity';
@@ -9,6 +11,7 @@ export class UsersResolver {
   constructor(private usersService: UsersService) {}
 
   @Query((returns) => User)
+  @UseGuards(GqlAuthGuard)
   getOneUser(@Args('id', { type: () => String }) id: number): Promise<User> {
     return this.usersService.getOneUser(id);
   }
