@@ -7,7 +7,7 @@ import { CreateExpenseInput } from './dto/create-expense.input';
 export class ExpensesService {
   constructor(private prisma: PrismaService) {}
 
-  getOneExpense(id: number): Promise<Expense> {
+  getOneExpense(userId: number, id: number): Promise<Expense> {
     return this.prisma.expense.findUnique({
       where: {
         id,
@@ -15,17 +15,19 @@ export class ExpensesService {
     });
   }
 
-  findAllExpenses(): Promise<Expense[]> {
+  findAllExpenses(userId: number): Promise<Expense[]> {
     return this.prisma.expense.findMany();
   }
 
-  createExpense(data: CreateExpenseInput): Promise<Expense> {
+  createExpense(userId: number, data: CreateExpenseInput): Promise<Expense> {
+    // Check if this user can create an expense
     return this.prisma.expense.create({
       data,
     });
   }
 
-  removeExpense(id: number): Promise<Expense> {
+  deleteExpense(userId: number, id: number): Promise<Expense> {
+    // Check if this user can delete an expense
     return this.prisma.expense.delete({
       where: {
         id,

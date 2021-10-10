@@ -10,12 +10,13 @@ import { UsersService } from './users.service';
 export class UsersResolver {
   constructor(private usersService: UsersService) {}
 
-  @Query((returns) => User)
   @UseGuards(GqlAuthGuard)
+  @Query((returns) => User)
   getOneUser(@Args('id', { type: () => String }) id: number): Promise<User> {
     return this.usersService.getOneUser(id);
   }
 
+  @UseGuards(GqlAuthGuard)
   @Query((returns) => [User])
   getAllUsers(): Promise<User[]> {
     return this.usersService.getAllUsers();
@@ -30,6 +31,7 @@ export class UsersResolver {
     return this.usersService.createUser(createUserInput);
   }
 
+  @UseGuards(GqlAuthGuard)
   @Mutation((returns) => User)
   updateUser(
     @Args('updateUserInput') updateUserInput: UpdateUserUsernameInput,

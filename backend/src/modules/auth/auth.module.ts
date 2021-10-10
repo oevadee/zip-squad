@@ -7,6 +7,7 @@ import { jwtSecret } from './contants';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { PrismaService } from 'src/prisma.service';
 import { AuthResolver } from './auth.resolver';
+import { GqlAuthGuard } from './guards/gql-auth.guard';
 
 const tokenExpireTime = 60 * 60 * 24 * 7 * 2;
 const defaultPassportStrategy = 'jwt';
@@ -20,7 +21,13 @@ const defaultPassportStrategy = 'jwt';
       signOptions: { expiresIn: tokenExpireTime },
     }),
   ],
-  providers: [AuthResolver, AuthService, JwtStrategy, PrismaService],
+  providers: [
+    AuthResolver,
+    AuthService,
+    JwtStrategy,
+    PrismaService,
+    GqlAuthGuard,
+  ],
   exports: [AuthService],
 })
 export class AuthModule {}
