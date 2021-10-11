@@ -12,6 +12,7 @@ import { AuthModule } from './modules/auth/auth.module';
       plugins: [ApolloServerPluginLandingPageLocalDefault],
       installSubscriptionHandlers: true,
       autoSchemaFile: true,
+      context: ({ req }) => ({ request: req }),
     }),
     UsersModule,
     ExpensesModule,
