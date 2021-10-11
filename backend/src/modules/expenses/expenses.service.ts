@@ -19,10 +19,13 @@ export class ExpensesService {
     return this.prisma.expense.findMany();
   }
 
-  createExpense(userId: number, data: CreateExpenseInput): Promise<Expense> {
+  createExpense(userId: number, input: CreateExpenseInput): Promise<Expense> {
     // Check if this user can create an expense
     return this.prisma.expense.create({
-      data,
+      data: {
+        ...input,
+        authorId: userId,
+      },
     });
   }
 

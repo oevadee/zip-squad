@@ -1,17 +1,18 @@
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { ExpensesService } from './expenses.service';
-import { Expense } from './entities/expense.entity';
 import { CreateExpenseInput } from './dto/create-expense.input';
 import { UseGuards } from '@nestjs/common';
 import { GqlAuthGuard } from 'modules/auth/guards/gql-auth.guard';
 import { CtxUser } from 'modules/auth/decorators/ctx-user.decorator';
 import { User } from '.prisma/client';
+import { Expense } from './models/expense';
 
 @Resolver(() => Expense)
 @UseGuards(GqlAuthGuard)
 export class ExpensesResolver {
   constructor(private readonly expensesService: ExpensesService) {}
 
+  @UseGuards(GqlAuthGuard)
   @Query(() => Expense, { name: 'expense' })
   getOneExpense(
     @CtxUser() user: User,
@@ -27,6 +28,7 @@ export class ExpensesResolver {
 
   // MUTATIONS
 
+  @UseGuards(GqlAuthGuard)
   @Mutation(() => Expense)
   createExpense(
     @CtxUser() user: User,
@@ -36,6 +38,7 @@ export class ExpensesResolver {
     return this.expensesService.createExpense(user.id, createExpenseInput);
   }
 
+  @UseGuards(GqlAuthGuard)
   @Mutation(() => Expense)
   deleteExpense(
     @CtxUser() user: User,

@@ -8,9 +8,9 @@ export class CreateExpenseInput {
   @Field()
   message: string;
 
-  @Field((type) => Int)
-  receiverId: number;
+  @Field({ nullable: true })
+  receiverId?: number;
 
-  @Field((type) => Int)
-  authorId: number;
+  @Field({ nullable: true })
+  authorId?: number;
 }
