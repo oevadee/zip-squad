@@ -17,6 +17,6 @@ export class User {
   @Field()
   username: string;
 
-  @Field()
-  password: string;
+  @Field({ nullable: true })
+  password?: string;
 }

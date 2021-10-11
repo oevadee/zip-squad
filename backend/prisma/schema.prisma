@@ -21,7 +21,7 @@ model Expense {
   id         Int    @id @default(autoincrement())
   message    String
   value      Int
-  receiverId Int
-  author     User   @relation(fields: [authorId], references: [id])
-  authorId   Int
+  receiverId Int?
+  author     User?  @relation(fields: [authorId], references: [id])
+  authorId   Int?
 }

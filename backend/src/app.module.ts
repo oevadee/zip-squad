@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
-import { UsersModule } from './modules/users/users.module';
-// import { ExpensesModule } from './expenses/expenses.module';
-import { ExpensesModule } from './modules/expenses/expenses.module';
+import { UsersModule } from 'modules/users/users.module';
+import { ExpensesModule } from 'modules/expenses/expenses.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -12,10 +12,11 @@ import { ExpensesModule } from './modules/expenses/expenses.module';
       plugins: [ApolloServerPluginLandingPageLocalDefault],
       installSubscriptionHandlers: true,
       autoSchemaFile: true,
+      context: ({ req }) => ({ request: req }),
     }),
     UsersModule,
     ExpensesModule,
-    // ExpensesModule,
+    AuthModule,
   ],
 })
 export class AppModule {}

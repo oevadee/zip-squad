@@ -5,5 +5,6 @@ import { PrismaService } from 'src/prisma.service';
 
 @Module({
   providers: [UsersService, UsersResolver, PrismaService],
+  exports: [UsersService],
 })
 export class UsersModule {}

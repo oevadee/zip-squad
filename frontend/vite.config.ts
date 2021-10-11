@@ -28,4 +28,7 @@ export default defineConfig({
             views: path.resolve(__dirname, './src/views'),
         },
     },
+    server: {
+        port: 8000,
+    },
 });
