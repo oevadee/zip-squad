@@ -8,6 +8,7 @@
         "test": "jest"
     },
     "dependencies": {
+        "graphql": "^15.6.1",
         "path": "^0.12.7",
         "react": "^17.0.0",
         "react-dom": "^17.0.0",
@@ -15,7 +16,8 @@
         "react-loader-spinner": "^4.0.0",
         "react-router-dom": "^5.3.0",
         "react-toastify": "^8.0.3",
-        "styled-components": "^5.3.1"
+        "styled-components": "^5.3.1",
+        "urql": "^2.0.5"
     },
     "devDependencies": {
         "@babel/preset-env": "^7.15.6",

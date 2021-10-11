@@ -13,6 +13,7 @@ export default defineConfig({
     ],
     resolve: {
         alias: {
+            apiTypes: path.resolve(__dirname, '../backend/schema.gql'),
             components: path.resolve(__dirname, './src/components'),
             api: path.resolve(__dirname, './src/api'),
             assets: path.resolve(__dirname, './src/assets'),
@@ -26,6 +27,7 @@ export default defineConfig({
             pages: path.resolve(__dirname, './src/pages'),
             router: path.resolve(__dirname, './src/router'),
             views: path.resolve(__dirname, './src/views'),
+            providers: path.resolve(__dirname, './src/providers'),
         },
     },
     server: {

@@ -6,6 +6,9 @@ import styled from 'styled-components';
 import { Button, ButtonVariants } from 'components/button';
 import { Link } from 'react-router-dom';
 import { Routes } from 'router/routes';
+import { useCreateUser } from 'api/graphql/hooks/useCreateUser';
+import { LS_AUTH_TOKEN } from 'constants/auth';
+import { useUser } from 'providers/user';
 
 const SWrapper = styled.div`
     height: 100vh;
@@ -59,10 +62,22 @@ const SLink = styled(Link)`
 
 export const RegisterView = () => {
     const { register, getValues, handleSubmit } = useForm();
+    const { createUser, state } = useCreateUser();
+    const { user, setUser } = useUser();
 
-    const onSubmit = (values: any) => {
-        console.log(values);
+    const onSubmit = async (values: any) => {
+        try {
+            const { data } = await createUser(values);
+            const { token, user } = data.register;
+
+            localStorage.setItem(LS_AUTH_TOKEN, token);
+            setUser(user);
+        } catch (err) {
+            console.error(err);
+        }
     };
+
+    console.log(user);
 
     return (
         <SWrapper>

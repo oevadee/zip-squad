@@ -1,4 +1,12 @@
-import { Args, Mutation, Resolver } from '@nestjs/graphql';
+import {
+  Args,
+  Field,
+  InputType,
+  Mutation,
+  ObjectType,
+  Resolver,
+} from '@nestjs/graphql';
+import { User } from 'modules/users/models/user';
 import { AuthService } from './auth.service';
 import { AuthLoginInput } from './dto/auth-login.input';
 import { AuthRegisterInput } from './dto/auth-register.input';

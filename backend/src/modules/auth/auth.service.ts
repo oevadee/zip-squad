@@ -66,16 +66,4 @@ export class AuthService {
   public async validateUser(userId: number) {
     return this.usersService.getOneUser(userId);
   }
-
-  // async verify(token: string): Promise<User> {
-  //   const decoded = this.jwtService.verify(token, {
-  //     secret: jwtSecret,
-  //   });
-
-  //   const user = this.usersService.getAuthUser(decoded.username);
-
-  //   if (!user) throw new Error('Invalid token.');
-
-  //   return user;
-  // }
 }

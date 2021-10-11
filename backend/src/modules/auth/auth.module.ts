@@ -29,10 +29,6 @@ const defaultPassportStrategy = 'jwt';
     JwtStrategy,
     PrismaService,
     GqlAuthGuard,
-    {
-      provide: APP_GUARD,
-      useClass: JwtAuthGuard,
-    },
   ],
   exports: [AuthService],
 })

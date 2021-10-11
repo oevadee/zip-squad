@@ -6,6 +6,9 @@ import styled from 'styled-components';
 import { Button, ButtonVariants } from 'components/button';
 import { Routes } from 'router/routes';
 import { Link } from 'react-router-dom';
+import { useLoginUser } from 'api/graphql/hooks/useLoginUser';
+import { useUser } from 'providers/user';
+import { LS_AUTH_TOKEN } from 'constants/auth';
 
 const SWrapper = styled.div`
     height: 100vh;
@@ -52,10 +55,22 @@ const SLink = styled(Link)`
 
 export const LoginView = () => {
     const { register, getValues, handleSubmit } = useForm();
+    const { loginUser, state } = useLoginUser();
+    const { setUser } = useUser();
 
-    const onSubmit = (values: any) => {
-        console.log(values);
+    const onSubmit = async (values: any) => {
+        try {
+            const { data } = await loginUser(values);
+            const { token, user } = data.login;
+
+            localStorage.setItem(LS_AUTH_TOKEN, token);
+            setUser(user);
+        } catch (err) {
+            console.error(err);
+        }
     };
+
+    console.log(state);
 
     return (
         <SWrapper>
