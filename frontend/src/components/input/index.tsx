@@ -56,14 +56,15 @@ const SInput = styled.input`
         /* Most modern browsers support this now. */
         color: ${({ theme }) => theme.colors.gray};
     }
+`;
 
-    &:-webkit-autofill,
-    :-webkit-autofill:hover,
-    :-webkit-autofill:focus,
-    :-webkit-autofill:active {
-        -webkit-box-shadow: 0 0 0 30px ${({ theme }) => theme.colors.background} inset !important;
-        -webkit-text-fill-color: ${({ theme }) => theme.colors.white} !important;
-    }
+const SHiddenInput = styled.input`
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    position: absolute;
+    ledt: 0;
+    top: 0;
 `;
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
@@ -73,15 +74,26 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
     getValues: UseFormGetValues<FieldValues>;
 }
 
-export const Input = ({ placeholder, register, getValues, name, label, type = 'text' }: Props) => {
+export const Input = ({
+    placeholder,
+    register,
+    getValues,
+    name,
+    label,
+    type = 'text',
+    ...props
+}: Props) => {
     return (
         <SWrapper>
+            <SHiddenInput type="text" />
             <SLabel htmlFor={name}>{label}</SLabel>
             <SInput
                 type={type}
                 placeholder={placeholder}
                 {...register(name)}
                 onChange={() => getValues(name)}
+                autoComplete="off"
+                {...props}
             />
         </SWrapper>
     );

@@ -10,6 +10,6 @@ interface Props {
 export const emmitAlert = ({ status, text, icon = false }: Props) => {
     return toast[status](text, {
         icon,
-        theme: 'dark',
+        theme: 'colored',
     });
 };

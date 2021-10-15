@@ -1,5 +1,5 @@
-import { Layout } from 'layouts/Layout';
 import React, { ReactNode } from 'react';
+import { Layout } from 'layouts/layout';
 import { useLocation } from 'react-router';
 import { Routes } from 'router/routes';
 import { matchRoute } from 'utils/matchRoute';

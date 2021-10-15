@@ -6,6 +6,9 @@ import styled from 'styled-components';
 import { Button, ButtonVariants } from 'components/button';
 import { Routes } from 'router/routes';
 import { Link } from 'react-router-dom';
+import { useLoginUser } from 'api/graphql/hooks/user/useLoginUser';
+import { useUser } from 'providers/user';
+import { LS_AUTH_TOKEN } from 'constants/auth';
 
 const SWrapper = styled.div`
     height: 100vh;
@@ -29,6 +32,7 @@ const SForm = styled.form`
 const SButtonsWrapper = styled.div`
     width: 100%;
     display: flex;
+    flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
 `;
@@ -50,11 +54,26 @@ const SLink = styled(Link)`
     text-decoration: none;
 `;
 
+type LoginFormValues = {
+    username: string;
+    password: string;
+};
+
 export const LoginView = () => {
     const { register, getValues, handleSubmit } = useForm();
+    const { loginUser } = useLoginUser();
+    const { setUser } = useUser();
 
-    const onSubmit = (values: any) => {
-        console.log(values);
+    const onSubmit = async (values: LoginFormValues) => {
+        try {
+            const { data } = await loginUser(values);
+            const { token, user } = data.login;
+
+            localStorage.setItem(LS_AUTH_TOKEN, token);
+            setUser(user);
+        } catch (err) {
+            console.error(err);
+        }
     };
 
     return (
@@ -79,13 +98,15 @@ export const LoginView = () => {
                     getValues={getValues}
                 />
                 <SButtonsWrapper>
+                    <Button>Login</Button>
                     <SLoginButtonWrapper>
                         <SParagraph>Don't have an account?</SParagraph>
                         <SLink to={Routes.Register}>
-                            <Button variant={ButtonVariants.Secondary}>Just register</Button>
+                            <Button type="button" variant={ButtonVariants.Secondary}>
+                                Just register
+                            </Button>
                         </SLink>
                     </SLoginButtonWrapper>
-                    <Button>Register</Button>
                 </SButtonsWrapper>
             </SForm>
         </SWrapper>

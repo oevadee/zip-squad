@@ -1,6 +1,6 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
-import { JwtService } from '@nestjs/jwt';
+import { JwtService, JwtVerifyOptions } from '@nestjs/jwt';
 import { User } from '.prisma/client';
 import { jwtSecret } from './contants';
 import { PrismaService } from 'src/prisma.service';
@@ -9,13 +9,14 @@ import { AuthRegisterInput } from './dto/auth-register.input';
 import { UserToken } from './models/user-token';
 import { AuthHelper } from './auth.helper';
 import { JwtDto } from './dto/jwt.dto';
+import { AuthVerifyToken } from './dto/auth-verify-token.input';
+import { VerifiedCallback, VerifyCallback } from 'passport-jwt';
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly usersService: UsersService,
     private readonly jwtService: JwtService,
-    private readonly prisma: PrismaService,
   ) {}
 
   public async login(input: AuthLoginInput): Promise<UserToken> {
@@ -41,11 +42,10 @@ export class AuthService {
     // check if the user already exists
     const found = await this.usersService.getAuthUser(input.username);
 
-    if (found) {
+    if (found)
       throw new BadRequestException(
         `Username ${input.username} is already taken.`,
       );
-    }
 
     const password = await AuthHelper.hash(input.password);
 
@@ -67,15 +67,13 @@ export class AuthService {
     return this.usersService.getOneUser(userId);
   }
 
-  // async verify(token: string): Promise<User> {
-  //   const decoded = this.jwtService.verify(token, {
-  //     secret: jwtSecret,
-  //   });
-
-  //   const user = this.usersService.getAuthUser(decoded.username);
-
-  //   if (!user) throw new Error('Invalid token.');
-
-  //   return user;
-  // }
+  public async verifyToken(input: AuthVerifyToken) {
+    const isValid = this.jwtService.verify(input.token);
+    if (isValid) {
+      const { password, ...user } = await this.usersService.getOneUser(
+        isValid.userId,
+      );
+      return user;
+    } else throw new Error('No token');
+  }
 }

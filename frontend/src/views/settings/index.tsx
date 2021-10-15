@@ -4,10 +4,10 @@ import styled from 'styled-components';
 
 import { Chip } from 'components/chip';
 import { PageHeading } from 'components/page-heading';
-import { user } from 'constants/testUser';
 import { ChangePasswordForm } from './components/change-password-form';
 import { ChangeUsernameForm } from './components/username-form';
 import { Card } from 'components/card';
+import { useUser } from 'providers/user';
 
 const SWrapper = styled.div`
     width: 100%;
@@ -30,6 +30,8 @@ const SUserNameHeading = styled.h4`
 `;
 
 export const SettingsView = () => {
+    const { user } = useUser();
+
     return (
         <SWrapper>
             <PageHeading>Settings</PageHeading>
@@ -38,10 +40,12 @@ export const SettingsView = () => {
                     <ChangeUsernameForm />
                     <ChangePasswordForm />
                 </SFormsWrapper>
-                <Card>
-                    <SUserNameHeading>{`${user.firstName} ${user.lastName}`}</SUserNameHeading>
-                    <Chip title={user.username} />
-                </Card>
+                {user && (
+                    <Card>
+                        <SUserNameHeading>{`${user.firstName} ${user.lastName}`}</SUserNameHeading>
+                        <Chip title={user.username} />
+                    </Card>
+                )}
             </SSettingsWrapper>
         </SWrapper>
     );
