@@ -7,6 +7,8 @@ import { SummaryCard } from './components/summary-card';
 import { Table } from 'components/table';
 import { Card } from 'components/card';
 import PlusIcon from 'assets/icons/plus-icon.svg';
+import { useGetAllUsers } from 'api/graphql/hooks/user/useGetAllUsers';
+import { Spinner } from 'components/spinner';
 
 const SCardsWrapper = styled.div`
     display: flex;
@@ -40,22 +42,13 @@ const cols = [
     },
 ];
 
-const rows = [
-    {
-        username: 'Adi',
-        moneyYouOwe: 123,
-        moneyPeopleOwes: 40,
-    },
-    {
-        username: 'Boby',
-        moneyYouOwe: 0,
-        moneyPeopleOwes: 420,
-    },
-];
-
 export const DashboardView = () => {
+    const { data, fetching, error, reexecuteQuery } = useGetAllUsers();
+
+    if (fetching) return <Spinner />;
+
     return (
-        <div>
+        <>
             <PageHeading>Dashboard</PageHeading>
             <SCardsWrapper>
                 <SummaryCard />
@@ -66,7 +59,7 @@ export const DashboardView = () => {
                     </SIconWrapper>
                 </Card>
             </SCardsWrapper>
-            <Table columns={cols} rows={rows} noDataText="No one owes you money" loading={false} />
-        </div>
+            <Table columns={cols} rows={data} noDataText="No one owes you money" />
+        </>
     );
 };

@@ -1,4 +1,3 @@
-import { User } from 'constants/testUser';
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 import { TableBody, TableBodyProps } from './table-body';

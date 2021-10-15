@@ -9,10 +9,6 @@ import { ChangeUsernameForm } from './components/username-form';
 import { Card } from 'components/card';
 import { useUser } from 'providers/user';
 
-const SWrapper = styled.div`
-    width: 100%;
-`;
-
 const SSettingsWrapper = styled.div`
     display: flex;
     align-items: flex-start;
@@ -33,7 +29,7 @@ export const SettingsView = () => {
     const { user } = useUser();
 
     return (
-        <SWrapper>
+        <>
             <PageHeading>Settings</PageHeading>
             <SSettingsWrapper>
                 <SFormsWrapper>
@@ -47,6 +43,6 @@ export const SettingsView = () => {
                     </Card>
                 )}
             </SSettingsWrapper>
-        </SWrapper>
+        </>
     );
 };

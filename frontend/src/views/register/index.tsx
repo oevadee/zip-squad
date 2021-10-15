@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { Button, ButtonVariants } from 'components/button';
 import { Link } from 'react-router-dom';
 import { Routes } from 'router/routes';
-import { useCreateUser } from 'api/graphql/hooks/user/useCreateUser';
+import { useCreateUser } from 'api/graphql/hooks/auth/useCreateUser';
 import { LS_AUTH_TOKEN } from 'constants/auth';
 import { useUser } from 'providers/user';
 

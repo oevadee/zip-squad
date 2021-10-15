@@ -1,6 +1,7 @@
 import { LoginPage } from 'pages/login';
 import { RegisterPage } from 'pages/register';
 import { SettingsPage } from 'pages/settings';
+import { UsersPage } from 'pages/users';
 import { ComponentType, ReactNode } from 'react';
 import { DashboardPage } from '../pages/index';
 
@@ -16,6 +17,7 @@ export enum Routes {
     Register = '/register',
     Settings = '/settings',
     Chat = '/chat',
+    Users = '/users',
 }
 
 export const router = [
@@ -35,5 +37,9 @@ export const router = [
     {
         path: Routes.Settings,
         component: SettingsPage,
+    },
+    {
+        path: Routes.Users,
+        component: UsersPage,
     },
 ];

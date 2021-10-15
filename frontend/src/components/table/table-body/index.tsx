@@ -22,19 +22,12 @@ const STd = styled.td`
 
 export interface TableBodyProps {
     rows?: any[];
-    loading: boolean;
     columns: Column[];
     onRowClick?: (row: any) => void;
     noDataText: string;
 }
 
-export const TableBody = ({
-    rows,
-    loading = false,
-    columns,
-    onRowClick,
-    noDataText,
-}: TableBodyProps) => {
+export const TableBody = ({ rows, columns, onRowClick, noDataText }: TableBodyProps) => {
     const getCells = (row: any) =>
         columns.map((col, i) => {
             const cellContent = col.customFormatter ? col.customFormatter : row[col.value];
@@ -45,14 +38,12 @@ export const TableBody = ({
 
     return (
         <tbody>
-            {rows?.length && !loading ? (
+            {rows?.length ? (
                 rows.map((row, i) => (
                     <STr key={i} onClick={() => handleRowClick(row)}>
                         {getCells(row)}
                     </STr>
                 ))
-            ) : loading ? (
-                <Spinner />
             ) : (
                 <h3>{noDataText}</h3>
             )}

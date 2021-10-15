@@ -37,6 +37,7 @@ export const Sidebar = () => {
                 <SList>
                     <ListItem to={Routes.Dashboard}>Dashboard</ListItem>
                     <ListItem to={Routes.Chat}>Chat</ListItem>
+                    <ListItem to={Routes.Users}>Users</ListItem>
                     <ListItem to={Routes.Settings}>Settings</ListItem>
                 </SList>
             </nav>
