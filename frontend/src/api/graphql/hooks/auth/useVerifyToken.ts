@@ -15,7 +15,7 @@ export const useVerifyToken = () => {
 
         const { verifyToken } = data;
 
-        return { user: verifyToken };
+        return verifyToken;
     };
 
     return {

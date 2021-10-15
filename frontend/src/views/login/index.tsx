@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import ZipSquadLogo from 'assets/zip-squad-logo.svg';
 import { Input } from 'components/input';
 import { useForm } from 'react-hook-form';
@@ -63,11 +63,6 @@ export const LoginView = () => {
     const { register, getValues, handleSubmit } = useForm();
     const { loginUser } = useLoginUser();
     const { setUser } = useUser();
-
-    useEffect(() => {
-        const token = localStorage.getItem(LS_AUTH_TOKEN);
-        console.log(token);
-    }, []);
 
     const onSubmit = async (values: LoginFormValues) => {
         try {

@@ -27,6 +27,7 @@ const SInput = styled.input`
     color: ${({ theme }) => theme.colors.white};
     outline: none;
     transition: ${({ theme }) => theme.transitions.ease};
+    --autofill-mode: autofill-off;
 
     &:focus {
         border: solid 1px ${({ theme }) => theme.colors.primary};
@@ -66,6 +67,15 @@ const SInput = styled.input`
     }
 `;
 
+const SHiddenInput = styled.input`
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    position: absolute;
+    ledt: 0;
+    top: 0;
+`;
+
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
     name: string;
     label: string;
@@ -73,15 +83,26 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
     getValues: UseFormGetValues<FieldValues>;
 }
 
-export const Input = ({ placeholder, register, getValues, name, label, type = 'text' }: Props) => {
+export const Input = ({
+    placeholder,
+    register,
+    getValues,
+    name,
+    label,
+    type = 'text',
+    ...props
+}: Props) => {
     return (
         <SWrapper>
+            <SHiddenInput type="text" />
             <SLabel htmlFor={name}>{label}</SLabel>
             <SInput
                 type={type}
                 placeholder={placeholder}
                 {...register(name)}
                 onChange={() => getValues(name)}
+                autoComplete="off"
+                {...props}
             />
         </SWrapper>
     );
