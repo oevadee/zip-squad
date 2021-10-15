@@ -55,17 +55,17 @@ export class UsersResolver {
     return await this.usersService.createUser(input);
   }
 
-  @UseGuards(GqlAuthGuard)
+  // @UseGuards(GqlAuthGuard)
   @Mutation(() => User)
   updateUser(
-    @Args('updateUserInput') updateUserInput: UpdateUserUsernameInput,
+    @Args('input') input: UpdateUserUsernameInput,
     @Args('userId') userId: number,
   ): Promise<User> {
     return this.usersService.updateUser({
       where: {
         id: userId,
       },
-      data: updateUserInput,
+      data: input,
     });
   }
 }

@@ -27,7 +27,6 @@ const SInput = styled.input`
     color: ${({ theme }) => theme.colors.white};
     outline: none;
     transition: ${({ theme }) => theme.transitions.ease};
-    --autofill-mode: autofill-off;
 
     &:focus {
         border: solid 1px ${({ theme }) => theme.colors.primary};
@@ -56,14 +55,6 @@ const SInput = styled.input`
     &::placeholder {
         /* Most modern browsers support this now. */
         color: ${({ theme }) => theme.colors.gray};
-    }
-
-    &:-webkit-autofill,
-    :-webkit-autofill:hover,
-    :-webkit-autofill:focus,
-    :-webkit-autofill:active {
-        -webkit-box-shadow: 0 0 0 30px ${({ theme }) => theme.colors.background} inset !important;
-        -webkit-text-fill-color: ${({ theme }) => theme.colors.white} !important;
     }
 `;
 

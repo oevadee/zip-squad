@@ -1,4 +1,3 @@
-import { User } from 'constants/testUser';
 import React, {
     Dispatch,
     SetStateAction,
@@ -8,6 +7,14 @@ import React, {
     useMemo,
     useState,
 } from 'react';
+
+export type User = {
+    id: number;
+    username: string;
+    firstName: string;
+    lastName: string;
+    password: string;
+};
 
 export interface UserStore {
     user: User | null;
