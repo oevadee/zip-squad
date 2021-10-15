@@ -1,10 +1,10 @@
+import { CREATE_USER_MUTATION } from 'api/graphql/mutations/user';
 import { useMutation } from 'urql';
-import { LOGIN_USER_MUTATION } from '../mutations/user';
 
-export const useLoginUser = () => {
-    const [state, executeMutation] = useMutation(LOGIN_USER_MUTATION);
+export const useCreateUser = () => {
+    const [state, executeMutation] = useMutation(CREATE_USER_MUTATION);
 
-    const loginUser = async (input: any) => {
+    const createUser = async (input: any) => {
         const { error, data } = await executeMutation({ input });
 
         if (error) return { error: error.graphQLErrors[0].extensions?.code };
@@ -14,6 +14,6 @@ export const useLoginUser = () => {
 
     return {
         state,
-        loginUser,
+        createUser,
     };
 };

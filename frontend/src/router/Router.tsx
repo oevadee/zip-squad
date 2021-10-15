@@ -1,24 +1,22 @@
-import { useUser } from 'providers/user';
 import React from 'react';
-import { Redirect, Route, Switch } from 'react-router';
+import { useUser } from 'providers/user';
+import { Redirect, Route, Switch, useHistory } from 'react-router';
 import { router, Routes } from './routes';
-
-enum RoutesWithoutLayout {
-    Login = Routes.Login,
-    Register = Routes.Register,
-}
 
 export const Router = () => {
     const { user } = useUser();
+    const { push } = useHistory();
 
-    console.log(RoutesWithoutLayout);
+    console.log(user);
 
     return (
-        <Switch>
-            {router.map(({ component, exact, path }) => (
-                <Route key={path} exact={exact} path={path} component={component} />
-            ))}
-            {!user && <Redirect to={Routes.Login} />}
-        </Switch>
+        <>
+            {!user ? <Redirect to={Routes.Login} /> : push(Routes.Dashboard)}
+            <Switch>
+                {router.map(({ component, exact, path }) => (
+                    <Route key={path} exact={exact} path={path} component={component} />
+                ))}
+            </Switch>
+        </>
     );
 };
