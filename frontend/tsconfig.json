@@ -17,7 +17,7 @@
         "resolveJsonModule": true,
         "jsx": "react-jsx",
         "suppressImplicitAnyIndexErrors": true,
-        "types": ["node"]
+        "types": ["node", "jest"]
     },
     "include": ["src"],
     "files": ["svg.d.ts"]
