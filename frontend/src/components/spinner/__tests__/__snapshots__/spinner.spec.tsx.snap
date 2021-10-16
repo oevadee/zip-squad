@@ -1,0 +1,228 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render spinner component 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        aria-busy="true"
+        class="sc-bdfBQB hIPhDP"
+      >
+        <svg
+          aria-label="audio-loading"
+          height="100"
+          id="goo-loader"
+          width="100"
+        >
+          <filter
+            id="fancy-goo"
+          >
+            <fegaussianblur
+              in="SourceGraphic"
+              result="blur"
+              stdDeviation="6"
+            />
+            <fecolormatrix
+              in="blur"
+              mode="matrix"
+              result="goo"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+            />
+            <fecomposite
+              in="SourceGraphic"
+              in2="goo"
+              operator="atop"
+            />
+          </filter>
+          <g
+            filter="url(#fancy-goo)"
+          >
+            <animatetransform
+              attributeName="transform"
+              attributeType="XML"
+              dur="1.2s"
+              from="0 50 50"
+              id="mainAnim"
+              repeatCount="indefinite"
+              to="359 50 50"
+              type="rotate"
+            />
+            <circle
+              cx="50%"
+              cy="40"
+              fill="#d66853"
+              r="11"
+            >
+              <animate
+                attributeName="cy"
+                attributeType="XML"
+                begin="0;cAnim1.end+0.2s"
+                calcMode="spline"
+                dur="0.6s"
+                id="cAnim1"
+                keySplines="0.09, 0.45, 0.16, 1;0.09, 0.45, 0.16, 1"
+                keyTimes="0;0.3;1"
+                values="40;20;40"
+              />
+            </circle>
+            <circle
+              cx="50%"
+              cy="60"
+              fill="#7d4e57"
+              r="11"
+            >
+              <animate
+                attributeName="cy"
+                attributeType="XML"
+                begin="0.4s;cAnim2.end+0.2s"
+                calcMode="spline"
+                dur="0.6s"
+                id="cAnim2"
+                keySplines="0.09, 0.45, 0.16, 1;0.09, 0.45, 0.16, 1"
+                keyTimes="0;0.3;1"
+                values="60;80;60"
+              />
+            </circle>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      aria-busy="true"
+      class="sc-bdfBQB hIPhDP"
+    >
+      <svg
+        aria-label="audio-loading"
+        height="100"
+        id="goo-loader"
+        width="100"
+      >
+        <filter
+          id="fancy-goo"
+        >
+          <fegaussianblur
+            in="SourceGraphic"
+            result="blur"
+            stdDeviation="6"
+          />
+          <fecolormatrix
+            in="blur"
+            mode="matrix"
+            result="goo"
+            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+          />
+          <fecomposite
+            in="SourceGraphic"
+            in2="goo"
+            operator="atop"
+          />
+        </filter>
+        <g
+          filter="url(#fancy-goo)"
+        >
+          <animatetransform
+            attributeName="transform"
+            attributeType="XML"
+            dur="1.2s"
+            from="0 50 50"
+            id="mainAnim"
+            repeatCount="indefinite"
+            to="359 50 50"
+            type="rotate"
+          />
+          <circle
+            cx="50%"
+            cy="40"
+            fill="#d66853"
+            r="11"
+          >
+            <animate
+              attributeName="cy"
+              attributeType="XML"
+              begin="0;cAnim1.end+0.2s"
+              calcMode="spline"
+              dur="0.6s"
+              id="cAnim1"
+              keySplines="0.09, 0.45, 0.16, 1;0.09, 0.45, 0.16, 1"
+              keyTimes="0;0.3;1"
+              values="40;20;40"
+            />
+          </circle>
+          <circle
+            cx="50%"
+            cy="60"
+            fill="#7d4e57"
+            r="11"
+          >
+            <animate
+              attributeName="cy"
+              attributeType="XML"
+              begin="0.4s;cAnim2.end+0.2s"
+              calcMode="spline"
+              dur="0.6s"
+              id="cAnim2"
+              keySplines="0.09, 0.45, 0.16, 1;0.09, 0.45, 0.16, 1"
+              keyTimes="0;0.3;1"
+              values="60;80;60"
+            />
+          </circle>
+        </g>
+      </svg>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

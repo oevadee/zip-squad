@@ -1,5 +1,5 @@
 import React from 'react';
-import theme from 'constants/theme';
+import theme from '../../constants/theme';
 import Loader from 'react-loader-spinner';
 import styled from 'styled-components';
 
