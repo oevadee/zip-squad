@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { GlobalStyle } from 'styles/GlobalStyle';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { App } from './App';
 import { Provider } from 'urql';
 import { client } from 'api/graphql/config';
@@ -11,10 +10,8 @@ ReactDOM.render(
     <React.StrictMode>
         <Provider value={client}>
             <UserProvider>
-                <Router>
-                    <GlobalStyle />
-                    <App />
-                </Router>
+                <GlobalStyle />
+                <App />
             </UserProvider>
         </Provider>
     </React.StrictMode>,

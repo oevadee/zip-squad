@@ -9,6 +9,7 @@ export interface IRoute {
     path: string;
     component: ComponentType<ReactNode>;
     exact?: boolean;
+    strict?: boolean;
 }
 
 export enum Routes {
@@ -25,21 +26,16 @@ export const router = [
         path: Routes.Dashboard,
         component: DashboardPage,
         exact: true,
-    },
-    {
-        path: Routes.Login,
-        component: LoginPage,
-    },
-    {
-        path: Routes.Register,
-        component: RegisterPage,
+        strict: true,
     },
     {
         path: Routes.Settings,
         component: SettingsPage,
+        strict: true,
     },
     {
         path: Routes.Users,
         component: UsersPage,
+        strict: true,
     },
 ];
