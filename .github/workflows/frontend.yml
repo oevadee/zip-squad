@@ -1,0 +1,31 @@
+name: Verify frontend
+
+on: pull_request
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      # Clone repo
+      - name: Clone repository
+        uses: actions/checkout@v2
+      # Cache node modules
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: yarn-deps-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            yarn-deps-${{ hashFiles('yarn.lock') }}
+      # Install dependencies
+      - name: Install dependencies
+        run: yarn
+        working-directory: "frontend"
+      # Test frontend
+      - name: Test frontend
+        run: yarn test
+        working-directory: "frontend"
+      # Build frontend
+      - name: Build frontend
+        run: yarn build
+        working-directory: "frontend"
