@@ -16,7 +16,8 @@
             "pages/*": ["./src/pages/*"],
             "router/*": ["./src/router/*"],
             "views/*": ["./src/views/*"],
-            "apiTypes": ["../backend/schema.gql"]
+            "apiTypes": ["../backend/schema.gql"],
+            "testUtils": ["./jest/test-utils.ts"]
         }
     }
 }

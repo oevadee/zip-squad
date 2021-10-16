@@ -1,10 +1,11 @@
-import React, { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
+import React, { ButtonHTMLAttributes, ReactNode } from 'react';
 import styled from 'styled-components';
 
 const SButton = styled.button`
     border: none;
     cursor: pointer;
     transition: ${({ theme }) => theme.transitions.ease};
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 `;
 
 const SButtonPrimary = styled(SButton)`
@@ -48,17 +49,17 @@ export enum ButtonVariants {
     Secondary = 'secondary',
 }
 
-interface Props
-    extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
+    children: ReactNode;
     variant?: ButtonVariants;
 }
 
-export const Button = ({ children, variant = ButtonVariants.Primary }: Props) => {
+export const Button = ({ children, variant = ButtonVariants.Primary, ...rest }: Props) => {
     const Button = variant === ButtonVariants.Primary ? SButtonPrimary : SButtonSecondary;
     const Paragraph = variant === ButtonVariants.Primary ? SParagraohPrimary : SParagraohSecondary;
 
     return (
-        <Button>
+        <Button {...rest}>
             <Paragraph>{children}</Paragraph>
         </Button>
     );

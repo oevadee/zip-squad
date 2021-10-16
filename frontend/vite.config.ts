@@ -28,6 +28,7 @@ export default defineConfig({
             router: path.resolve(__dirname, './src/router'),
             views: path.resolve(__dirname, './src/views'),
             providers: path.resolve(__dirname, './src/providers'),
+            testUtils: path.resolve(__dirname, './jest/test-utils.ts'),
         },
     },
     server: {
