@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { Button, ButtonVariants } from 'components/button';
 import { Routes } from 'router/routes';
 import { Link } from 'react-router-dom';
-import { useLoginUser } from 'api/graphql/hooks/user/useLoginUser';
+import { useLoginUser } from 'api/graphql/hooks/auth/useLoginUser';
 import { useUser } from 'providers/user';
 import { LS_AUTH_TOKEN } from 'constants/auth';
 

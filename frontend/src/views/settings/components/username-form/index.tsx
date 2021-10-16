@@ -51,7 +51,7 @@ export const ChangeUsernameForm = () => {
                 getValues={getValues}
                 placeholder="Change your username"
             />
-            <Button>Update</Button>
+            <Button>Update username</Button>
         </SUsernameForm>
     );
 };

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Sidebar } from 'components/sidebar';
 
 const SWrapper = styled.div`
-    height: 100vh;
+    min-height: 100vh;
 `;
 
 const SAppWrapper = styled.div`
@@ -12,6 +12,7 @@ const SAppWrapper = styled.div`
     top: 0;
     left: ${theme.componenetSizes.sidebar};
     width: calc(100% - ${theme.componenetSizes.sidebar} - 64px);
+    height: calc(100% - 64px);
     padding: ${({ theme }) => theme.appPadding};
 `;
 
