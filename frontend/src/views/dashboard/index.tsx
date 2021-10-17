@@ -43,7 +43,7 @@ const cols = [
 ];
 
 export const DashboardView = () => {
-    const { data, fetching, error, reexecuteQuery } = useGetAllUsers();
+    const { data, fetching } = useGetAllUsers();
 
     if (fetching) return <Spinner />;
 
