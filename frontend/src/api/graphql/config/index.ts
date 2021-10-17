@@ -1,4 +1,4 @@
-import { createClient, fetchExchange } from 'urql';
+import { createClient } from 'urql';
 import { API_URL } from 'constants/api';
 import { LS_AUTH_TOKEN } from 'constants/auth';
 

@@ -6,8 +6,8 @@
 
 There are 2 core branches:
 
-- master (dev)
-- prod
+-   master (dev)
+-   prod
 
 Each of them is protected which means that direct git push is forbidden.
 The only way to push any changes to those branches is via pull request.
@@ -39,7 +39,7 @@ Before creating PR to/from prod branch, you need to create a branch which name f
 
 name should start with "to-prod/" phrase, followed by:
 
-- "release-YYYY-mm-dd#X" when source branch is stage
+-   "release-YYYY-mm-dd#X" when source branch is stage
 
 ## Pull requests
 
@@ -53,8 +53,8 @@ Pull request names should be the same as source branch name, also whenever name 
 
 Example - second release of the day from master to stage:
 
-- Branch out from master to "to-prod/release-2021-09-10#2"
-- Create PR from "to-prod/release-2021-09-10#2"
+-   Branch out from master to "to-prod/release-2021-09-10#2"
+-   Create PR from "to-prod/release-2021-09-10#2"
 
 ---
 
