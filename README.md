@@ -9,7 +9,7 @@ There are 2 core branches:
 - master (dev)
 - prod
 
-Each of them is protected which means that direct git push is forbidden.
+Each of them is protected which means that direct git push is **FORBIDDEN!**.
 The only way to push any changes to those branches is via pull request.
 
 ### Naming convention
@@ -39,13 +39,13 @@ Before creating PR to/from prod branch, you need to create a branch which name f
 
 name should start with "to-prod/" phrase, followed by:
 
-- "release-YYYY-mm-dd#X" when source branch is stage
+- "release-YYYY-mm-dd#X" when source branch is master
 
 ## Pull requests
 
 ### General info
 
-Every PR should pass pipeline build and should be approved by at least 1 person before merge.
+Every PR should pass github actions check.
 
 ### Naming convention
 
@@ -60,17 +60,9 @@ Example - second release of the day from master to stage:
 
 #### Working on...
 
-<div style="opacity: 0.1"}>
-
 ### Deployments
-
-#### dev
-
-Every PR merged into master branch will trigger development environment deployment.
 
 #### prod
 
-Tagging a commit in prod branch will trigger production environment deployment.
-Tag name should follow semver rules e.g. "v1.2.1"
-
-</div>
+Tagging a commit in production branch will trigger production environment deployment.
+Tag name should include version specified in lerna "v1.2.1"
