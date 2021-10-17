@@ -1,26 +1,34 @@
 # ZIP Squad app
 
+---
+
+**Please clone _master_ repo!**
+: _production_ includes merging commits that we don't want in _master_
+
+---
+
 ## Branches
 
 ### General info
 
 There are 2 core branches:
 
-- master (dev)
-- prod
+| master | production |
+| ------ | ---------- |
+| dev    | deploy     |
 
 Each of them is protected which means that direct git push is **FORBIDDEN!**.
-The only way to push any changes to those branches is via pull request.
+The only way to push any changes to those branches is via **pull request**.
 
 ### Naming convention
 
 Every branch (other than core) should be created of following parts:
 
-1. GROUP WORD - one of (feature, bugfix, hotfix) followed by "/" char.
-2. Optional SCOPE - one of (infra, backend, frontend, marketing) followed by "/" char,
+1. **GROUP WORD** - one of (feature, bugfix, hotfix) followed by "/" char.
+2. Optional **SCOPE** - one of (infra, backend, frontend, marketing) followed by "/" char,
    can be added whenever changes in branch will be related to single root directory.
-3. TASK ID - related github issue id e.g. "ZIP-420", followed by "-" char.
-4. SHORT DESCRIPTION - precise and informative info in `kebab-case` about code changes in branch
+3. **TASK ID** - related github issue id e.g. "ZIP-420", followed by "-" char.
+4. **SHORT DESCRIPTION** - precise and informative info in `kebab-case` about code changes in branch
    e.g. "add-navigation-module".
 
 Example branch names:
