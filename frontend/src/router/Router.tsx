@@ -16,14 +16,16 @@ export const Router = () => {
                 exact={true}
                 path={Routes.Login}
                 verified={!user}
-                redirectPath={Routes.Dashboard}>
+                redirectPath={Routes.Dashboard}
+            >
                 <LoginPage />
             </PublicRoute>
             <PublicRoute
                 exact={true}
                 path={Routes.Register}
                 verified={!user}
-                redirectPath={Routes.Dashboard}>
+                redirectPath={Routes.Dashboard}
+            >
                 <RegisterPage />
             </PublicRoute>
             <PrivateRoute exact={true}>

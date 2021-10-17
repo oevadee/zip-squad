@@ -1,5 +1,5 @@
 # Ignore artifacts:
-build
+dist
 coverage
 package.json
 package-lock.json
@@ -8,3 +8,5 @@ public
 # Ignore all HTML files:
 *.html
 
+# Ignore rest files
+README.md

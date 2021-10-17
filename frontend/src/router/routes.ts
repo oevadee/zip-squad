@@ -1,5 +1,3 @@
-import { LoginPage } from 'pages/login';
-import { RegisterPage } from 'pages/register';
 import { SettingsPage } from 'pages/settings';
 import { UsersPage } from 'pages/users';
 import { ComponentType, ReactNode } from 'react';
