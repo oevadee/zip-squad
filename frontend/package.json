@@ -5,7 +5,9 @@
         "start": "vite",
         "build": "tsc && vite build",
         "serve": "vite preview",
-        "test": "yarn run jest -env=jsdom --verbose"
+        "test": "yarn run jest -env=jsdom --verbose",
+        "format": "prettier --write .",
+        "precommit": "yarn run format"
     },
     "dependencies": {
         "graphql": "^15.6.1",
