@@ -1,9 +1,8 @@
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import { User } from 'modules/users/models/user';
 import { AuthService } from './auth.service';
-import { AuthLoginInput } from './dto/auth-login.input';
-import { AuthRegisterInput } from './dto/auth-register.input';
-import { AuthVerifyToken } from './dto/auth-verify-token.input';
+import { AuthLoginInput } from './dto/auth-login.dto';
+import { AuthRegisterInput } from './dto/auth-register.dto';
 import { RegisterStatus } from './models/register-status';
 import { UserToken } from './models/user-token';
 

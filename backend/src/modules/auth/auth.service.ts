@@ -1,11 +1,12 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
-import { AuthLoginInput } from './dto/auth-login.input';
-import { AuthRegisterInput } from './dto/auth-register.input';
+import { AuthLoginInput } from './dto/auth-login.dto';
+import { AuthRegisterInput } from './dto/auth-register.dto';
 import { UserToken } from './models/user-token';
 import { compare } from 'bcryptjs';
 import { RegisterStatus } from './models/register-status';
+import { User } from 'modules/users/models/user';
 
 @Injectable()
 export class AuthService {
@@ -14,7 +15,7 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async validateUser(username: string, password: string): Promise<any> {
+  async validateUser(username: string, password: string): Promise<User | null> {
     const user = await this.usersService.findOne(username);
     if (!user && (await compare(password, user.password))) {
       const { password, ...rest } = user;
