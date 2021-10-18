@@ -1,3 +1,4 @@
 export class JwtDto {
-  userId: number;
+  sub: number;
+  username: string;
 }

@@ -39,10 +39,13 @@ export class UsersResolver {
   constructor(private usersService: UsersService) {}
 
   @Query(() => User)
-  getOneUser(@Args('id', { type: () => String }) id: number): Promise<User> {
-    return this.usersService.getOneUser(id);
+  getOneUser(
+    @Args('username', { type: () => String }) username: string,
+  ): Promise<User> {
+    return this.usersService.findOne(username);
   }
 
+  @UseGuards(GqlAuthGuard)
   @Query(() => [User])
   getAllUsers(): Promise<User[]> {
     return this.usersService.getAllUsers();
@@ -55,15 +58,15 @@ export class UsersResolver {
     return await this.usersService.createUser(input);
   }
 
-  // @UseGuards(GqlAuthGuard)
+  @UseGuards(GqlAuthGuard)
   @Mutation(() => User)
   updateUser(
     @Args('input') input: UpdateUserUsernameInput,
-    @Args('userId') userId: number,
+    @Args('id') id: number,
   ): Promise<User> {
     return this.usersService.updateUser({
       where: {
-        id: userId,
+        id,
       },
       data: input,
     });
