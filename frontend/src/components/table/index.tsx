@@ -28,15 +28,23 @@ const STh = styled.th`
     padding: 6px 0;
 `;
 
+const SNoDataHeading = styled.h3`
+    margin-top: 48px;
+`;
+
 export type Column = {
     label: string;
     value: string;
     customFormatter?: (value: string) => ReactNode | JSX.Element | string;
 };
 
-interface Props extends TableBodyProps {}
+interface Props extends TableBodyProps {
+    noDataText: string;
+}
 
-export const Table = ({ columns, ...tableBodyProps }: Props) => {
+export const Table = ({ columns, noDataText, ...tableBodyProps }: Props) => {
+    if (!tableBodyProps.rows?.length) return <SNoDataHeading>{noDataText}</SNoDataHeading>;
+
     return (
         <SWrapper>
             <STable>

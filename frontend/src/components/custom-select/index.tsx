@@ -1,4 +1,5 @@
 import React from 'react';
+import { RefCallBack } from 'react-hook-form';
 import Select from 'react-select';
 import styled from 'styled-components';
 
@@ -48,17 +49,27 @@ type OptionType = {
 
 interface Props {
     options: OptionType[];
+    inputRef: RefCallBack;
+    name: string;
+    onChange: (value: number) => void;
+    value: number;
 }
 
-export const CustomSelect = ({ options }: Props) => {
+export const CustomSelect = ({ options, inputRef, name, onChange, value, ...rest }: Props) => {
     return (
         <SSelect
-            name="user"
+            onChange={(option: any) => {
+                onChange(option.value);
+            }}
+            value={options.find((c) => c.value === value)}
+            name={name}
+            ref={inputRef}
             className="basic-single"
             classNamePrefix="select"
             isClearable
             isSearchable
             options={options}
+            {...rest}
         />
     );
 };
