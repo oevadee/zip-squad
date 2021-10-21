@@ -15,9 +15,19 @@ export const VerifyUser = ({ children }: Props) => {
 
     const verify = async () => {
         try {
-            const token = localStorage.getItem(LS_AUTH_TOKEN);
-            const user = token && (await verifyToken(token));
-            user && setUser(user);
+            const access_token = localStorage.getItem(LS_AUTH_TOKEN);
+            if (access_token) {
+                const { data, error } = await verifyToken(access_token);
+
+                if (error) {
+                    localStorage.removeItem(LS_AUTH_TOKEN);
+                    throw error;
+                }
+
+                const { status, user } = data.verifyToken;
+
+                status === 'success' && setUser(user);
+            }
         } catch (err) {
             console.error(err);
         } finally {
