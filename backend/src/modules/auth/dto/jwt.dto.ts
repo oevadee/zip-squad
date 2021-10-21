@@ -1,3 +1,10 @@
+import { Field, InputType } from '@nestjs/graphql';
+
+@InputType()
 export class JwtDto {
-  userId: number;
+  @Field()
+  sub: number;
+
+  @Field()
+  username: string;
 }

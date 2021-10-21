@@ -4,18 +4,16 @@ import { VERIFY_TOKEN } from 'api/graphql/mutations/auth';
 export const useVerifyToken = () => {
     const [state, executeMutation] = useMutation(VERIFY_TOKEN);
 
-    const verifyToken = async (token: string) => {
+    const verifyToken = async (access_token: string): Promise<any> => {
         const { error, data } = await executeMutation({
             input: {
-                token,
+                access_token,
             },
         });
 
         if (error) return { error: error.graphQLErrors[0].extensions?.code };
 
-        const { verifyToken } = data;
-
-        return verifyToken;
+        return { data };
     };
 
     return {

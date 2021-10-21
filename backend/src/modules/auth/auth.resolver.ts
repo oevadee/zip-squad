@@ -1,22 +1,25 @@
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import { User } from 'modules/users/models/user';
 import { AuthService } from './auth.service';
-import { AuthLoginInput } from './dto/auth-login.input';
-import { AuthRegisterInput } from './dto/auth-register.input';
-import { AuthVerifyToken } from './dto/auth-verify-token.input';
-import { UserToken } from './models/user-token';
+import { AuthLoginInput } from './dto/auth-login.dto';
+import { AuthRegisterInput } from './dto/auth-register.dto';
+import { RegisterPayload } from './models/register';
+import { LoginPayload } from './models/login';
+import { AuthVerifyToken } from './dto/auth-verify-token.dto';
+import { VerifyTokenPayload } from './models/verify-token';
 
 @Resolver()
 export class AuthResolver {
   constructor(private readonly service: AuthService) {}
-  @Mutation(() => UserToken)
+
+  @Mutation(() => LoginPayload)
   login(
     @Args({ name: 'input', type: () => AuthLoginInput }) input: AuthLoginInput,
   ) {
     return this.service.login(input);
   }
 
-  @Mutation(() => UserToken)
+  @Mutation(() => RegisterPayload)
   register(
     @Args({ name: 'input', type: () => AuthRegisterInput })
     input: AuthRegisterInput,
@@ -24,7 +27,7 @@ export class AuthResolver {
     return this.service.register(input);
   }
 
-  @Mutation(() => User)
+  @Mutation(() => VerifyTokenPayload)
   verifyToken(
     @Args({ name: 'input', type: () => AuthVerifyToken })
     input: AuthVerifyToken,

@@ -67,9 +67,9 @@ export const LoginView = () => {
     const onSubmit = async (values: LoginFormValues) => {
         try {
             const { data } = await loginUser(values);
-            const { token, user } = data.login;
+            const { access_token, user } = data.login;
 
-            localStorage.setItem(LS_AUTH_TOKEN, token);
+            localStorage.setItem(LS_AUTH_TOKEN, access_token);
             setUser(user);
         } catch (err) {
             console.error(err);

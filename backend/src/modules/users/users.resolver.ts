@@ -9,40 +9,23 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import { GqlAuthGuard } from 'modules/auth/guards/gql-auth.guard';
-import { UpdateUserUsernameInput } from './dto/update-user.input';
+import { CreateUserInput } from './dto/create-user.dto';
+import { UpdateUserUsernameInput } from './dto/update-user.dto';
 import { User } from './models/user';
 import { UsersService } from './users.service';
-
-@InputType()
-class CreateUserInput {
-  @Field({ description: 'Email of the user.' })
-  firstName!: string;
-
-  @Field({ description: 'Full name of the user.' })
-  lastName!: string;
-
-  @Field({ description: 'Username of the user.' })
-  username!: string;
-
-  @Field({ description: 'User password.' })
-  password!: string;
-}
-
-@ObjectType()
-class CreateUserPayload {
-  @Field(() => User)
-  user!: User;
-}
 
 @Resolver(() => User)
 export class UsersResolver {
   constructor(private usersService: UsersService) {}
 
   @Query(() => User)
-  getOneUser(@Args('id', { type: () => String }) id: number): Promise<User> {
-    return this.usersService.getOneUser(id);
+  getOneUser(
+    @Args('username', { type: () => String }) username: string,
+  ): Promise<User> {
+    return this.usersService.findOne(username);
   }
 
+  @UseGuards(GqlAuthGuard)
   @Query(() => [User])
   getAllUsers(): Promise<User[]> {
     return this.usersService.getAllUsers();
@@ -50,20 +33,20 @@ export class UsersResolver {
 
   // MUTATION
 
-  @Mutation(() => CreateUserPayload)
+  @Mutation(() => User)
   async createUser(@Args('input') input: CreateUserInput) {
     return await this.usersService.createUser(input);
   }
 
-  // @UseGuards(GqlAuthGuard)
+  @UseGuards(GqlAuthGuard)
   @Mutation(() => User)
   updateUser(
     @Args('input') input: UpdateUserUsernameInput,
-    @Args('userId') userId: number,
+    @Args('id') id: number,
   ): Promise<User> {
     return this.usersService.updateUser({
       where: {
-        id: userId,
+        id,
       },
       data: input,
     });

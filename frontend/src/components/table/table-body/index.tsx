@@ -1,5 +1,4 @@
 import React from 'react';
-import { Spinner } from 'components/spinner';
 
 import styled from 'styled-components';
 import { Column } from '..';
@@ -24,10 +23,9 @@ export interface TableBodyProps {
     rows?: any[];
     columns: Column[];
     onRowClick?: (row: any) => void;
-    noDataText: string;
 }
 
-export const TableBody = ({ rows, columns, onRowClick, noDataText }: TableBodyProps) => {
+export const TableBody = ({ rows, columns, onRowClick }: TableBodyProps) => {
     const getCells = (row: any) =>
         columns.map((col, i) => {
             const cellContent = col.customFormatter ? col.customFormatter : row[col.value];
@@ -38,15 +36,11 @@ export const TableBody = ({ rows, columns, onRowClick, noDataText }: TableBodyPr
 
     return (
         <tbody>
-            {rows?.length ? (
-                rows.map((row, i) => (
-                    <STr key={i} onClick={() => handleRowClick(row)}>
-                        {getCells(row)}
-                    </STr>
-                ))
-            ) : (
-                <h3>{noDataText}</h3>
-            )}
+            {rows?.map((row, i) => (
+                <STr key={i} onClick={() => handleRowClick(row)}>
+                    {getCells(row)}
+                </STr>
+            ))}
         </tbody>
     );
 };

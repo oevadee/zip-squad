@@ -5,7 +5,7 @@ import { useGetAllUsers } from 'api/graphql/hooks/user/useGetAllUsers';
 import { Spinner } from 'components/spinner';
 
 export const UsersView = () => {
-    const { data, fetching, error, reexecuteQuery } = useGetAllUsers();
+    const { data, fetching } = useGetAllUsers();
 
     const cols = [
         {

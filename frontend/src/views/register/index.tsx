@@ -62,8 +62,8 @@ const SLink = styled(Link)`
 
 export const RegisterView = () => {
     const { register, getValues, handleSubmit } = useForm();
-    const { createUser, state } = useCreateUser();
-    const { user, setUser } = useUser();
+    const { createUser } = useCreateUser();
+    const { setUser } = useUser();
 
     const onSubmit = async (values: any) => {
         try {
@@ -76,8 +76,6 @@ export const RegisterView = () => {
             console.error(err);
         }
     };
-
-    console.log(user);
 
     return (
         <SWrapper>
@@ -109,7 +107,8 @@ export const RegisterView = () => {
                     getValues={getValues}
                 />
                 <Input
-                    label="Hasło"
+                    type="password"
+                    label="Password"
                     name="password"
                     placeholder="Enter password"
                     register={register}

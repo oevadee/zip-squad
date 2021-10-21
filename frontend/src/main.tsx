@@ -5,6 +5,9 @@ import { App } from './App';
 import { Provider } from 'urql';
 import { client } from 'api/graphql/config';
 import { UserProvider } from './providers/user';
+import Modal from 'react-modal';
+
+Modal.setAppElement('#root');
 
 ReactDOM.render(
     <React.StrictMode>

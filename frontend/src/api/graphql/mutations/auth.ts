@@ -18,7 +18,7 @@ export const CREATE_USER_MUTATION = gql`
 export const LOGIN_USER_MUTATION = gql`
     mutation LoginMutation($input: AuthLoginInput!) {
         login(input: $input) {
-            token
+            access_token
             user {
                 id
                 email
@@ -33,11 +33,14 @@ export const LOGIN_USER_MUTATION = gql`
 export const VERIFY_TOKEN = gql`
     mutation VerifyTokenMutation($input: AuthVerifyToken!) {
         verifyToken(input: $input) {
-            id
-            email
-            firstName
-            lastName
-            username
+            status
+            user {
+                id
+                email
+                firstName
+                lastName
+                username
+            }
         }
     }
 `;
