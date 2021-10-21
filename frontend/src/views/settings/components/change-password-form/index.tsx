@@ -50,6 +50,7 @@ export const ChangePasswordForm = () => {
                 placeholder="Change your password"
             />
             <SInput
+                isPassword
                 type="text"
                 label="Confirm password"
                 name="confirmPassword"

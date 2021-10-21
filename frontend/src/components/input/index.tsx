@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes } from 'react';
+import React, { InputHTMLAttributes, useState } from 'react';
 import { FieldValues, UseFormGetValues, UseFormRegister } from 'react-hook-form';
 import styled from 'styled-components';
 
@@ -6,20 +6,23 @@ const SWrapper = styled.div`
     width: 100%;
     margin-bottom: 18px;
     display: flex;
-    position: relative;
+    flex-direction: column;
 `;
 
 const SLabel = styled.label`
     text-transform: uppercase;
     font-size: ${({ theme }) => theme.font.size.small};
-    position: absolute;
-    top: -12px;
-    left: 8px;
 `;
 
-const SInput = styled.input`
-    margin: 6px 0 12px;
+const SInputWrapper = styled.div`
     width: 100%;
+    position: relative;
+`;
+
+const SInput = styled.input<{ isPassword: boolean | undefined }>`
+    -webkit-text-security: ${({ isPassword }) => (isPassword ? 'disc' : 'none')};
+    margin: 6px 0;
+    width: calc(100% - 24px);
     padding: 16px 12px;
     border-radius: ${({ theme }) => theme.borderRadius};
     background: none;
@@ -59,12 +62,32 @@ const SInput = styled.input`
     }
 `;
 
+const SShowPasswordButton = styled.button`
+    background: none;
+    border: none;
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+
+    img {
+        -webkit-filter: invert(70%); /* Safari/Chrome */
+        filter: invert(70%);
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+    }
+`;
+
 const SHiddenInput = styled.input`
     width: 0;
     height: 0;
     visibility: hidden;
     position: absolute;
-    ledt: 0;
+    left: 0;
     top: 0;
 `;
 
@@ -73,6 +96,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
     label: string;
     register: UseFormRegister<FieldValues>;
     getValues: UseFormGetValues<FieldValues>;
+    isPassword?: boolean | undefined;
 }
 
 export const Input = ({
@@ -82,20 +106,34 @@ export const Input = ({
     name,
     label,
     type = 'text',
+    isPassword,
     ...props
 }: Props) => {
+    const [passwordShown, setPasswordShow] = useState(false);
+
     return (
         <SWrapper>
-            <SHiddenInput type="text" />
             <SLabel htmlFor={name}>{label}</SLabel>
-            <SInput
-                type={type}
-                placeholder={placeholder}
-                {...register(name)}
-                onChange={() => getValues(name)}
-                autoComplete="off"
-                {...props}
-            />
+            <SInputWrapper>
+                <SInput
+                    isPassword={passwordShown ? false : isPassword}
+                    type={type === 'password' ? (passwordShown ? 'text' : 'password') : type}
+                    placeholder={placeholder}
+                    {...register(name)}
+                    onChange={() => getValues(name)}
+                    autoComplete="off"
+                    {...props}
+                />
+                {(type === 'password' || isPassword) && (
+                    <SShowPasswordButton
+                        type="button"
+                        onClick={() => setPasswordShow(!passwordShown)}
+                    >
+                        <img src="src/assets/icons/eye-password.png" alt="show password" />
+                    </SShowPasswordButton>
+                )}
+            </SInputWrapper>
+            <SHiddenInput type="text" />
         </SWrapper>
     );
 };

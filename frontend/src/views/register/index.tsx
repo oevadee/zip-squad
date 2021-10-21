@@ -107,7 +107,8 @@ export const RegisterView = () => {
                     getValues={getValues}
                 />
                 <Input
-                    label="Hasło"
+                    type="password"
+                    label="Password"
                     name="password"
                     placeholder="Enter password"
                     register={register}
