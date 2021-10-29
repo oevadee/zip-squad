@@ -1,11 +1,9 @@
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { ExpensesService } from './expenses.service';
 import { CreateExpenseInput } from './dto/create-expense.input';
-import { UseGuards } from '@nestjs/common';
-import { GqlAuthGuard } from 'modules/auth/guards/gql-auth.guard';
 import { CtxUser } from 'modules/auth/decorators/ctx-user.decorator';
-import { User } from '.prisma/client';
 import { Expense } from './models/expense';
+import { User } from '@prisma/client';
 
 @Resolver(() => Expense)
 export class ExpensesResolver {
