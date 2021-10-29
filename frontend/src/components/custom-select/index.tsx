@@ -3,38 +3,46 @@ import { RefCallBack } from 'react-hook-form';
 import Select from 'react-select';
 import styled from 'styled-components';
 
+const SLabel = styled.label`
+    text-transform: uppercase;
+    font-size: ${({ theme }) => theme.font.size.small};
+`;
+
 const SSelect = styled(Select)`
     .select__control {
         background: none;
-        margin: 6px 0;
-        width: calc(100% - 24px);
+        margin: 6px 0 0;
+        width: 100%;
         border-radius: ${({ theme }) => theme.borderRadius};
         border: solid 1px ${({ theme }) => theme.colors.darkGreen};
         outline: none;
         transition: ${({ theme }) => theme.transitions.ease};
-        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 
         &:hover {
             border: solid 1px ${({ theme }) => theme.colors.primary};
         }
     }
 
+    .select__control--menu-is-open {
+        border-radius: ${({ theme }) => theme.borderRadius} ${({ theme }) => theme.borderRadius} 0 0;
+        border-bottom: none;
+        box-shadow: none;
+    }
+
     .select__single-value {
         color: ${({ theme }) => theme.colors.white} !important;
     }
 
-    .select__input-container {
-        input {
-        }
-    }
-
     .select__menu {
         background: none;
+        margin: 0;
+        padding: 0;
+        border-left: solid 1px ${({ theme }) => theme.colors.darkGreen};
+        border-right: solid 1px ${({ theme }) => theme.colors.darkGreen};
     }
 
     .select__option {
         background: none;
-        border-radius: ${({ theme }) => theme.borderRadius};
 
         &:hover {
             background: ${({ theme }) => theme.colors.primary};
@@ -42,7 +50,7 @@ const SSelect = styled(Select)`
     }
 `;
 
-type OptionType = {
+export type OptionType = {
     value: number;
     label: string;
 };
@@ -53,23 +61,34 @@ interface Props {
     name: string;
     onChange: (value: number) => void;
     value: number;
+    label: string;
 }
 
-export const CustomSelect = ({ options, inputRef, name, onChange, value, ...rest }: Props) => {
+export const CustomSelect = ({
+    options,
+    inputRef,
+    name,
+    onChange,
+    value,
+    label,
+    ...rest
+}: Props) => {
     return (
-        <SSelect
-            onChange={(option: any) => {
-                onChange(option.value);
-            }}
-            value={options.find((c) => c.value === value)}
-            name={name}
-            ref={inputRef}
-            className="basic-single"
-            classNamePrefix="select"
-            isClearable
-            isSearchable
-            options={options}
-            {...rest}
-        />
+        <div>
+            <SLabel htmlFor={name}>{label}</SLabel>
+            <SSelect
+                onChange={(option: any) => {
+                    onChange(option.value);
+                }}
+                value={options?.find((c) => c.value === value) || []}
+                name={name}
+                ref={inputRef}
+                className="basic-single"
+                classNamePrefix="select"
+                isSearchable
+                options={options}
+                {...rest}
+            />
+        </div>
     );
 };
